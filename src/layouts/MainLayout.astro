@@ -10,6 +10,8 @@ const {
   title = 'Hausarztpraxis Dr. Bernd Schilling in Gomaringen',
   description = 'Familiäre Hausarztpraxis in Gomaringen, Lindenstraße 84. Seit über 100 Jahren in dritter Generation für Patientinnen und Patienten da.'
 } = Astro.props;
+
+const faviconHref = `${import.meta.env.BASE_URL}favicon.svg`;
 ---
 
 <!doctype html>
@@ -19,7 +21,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#1c4f4a" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={faviconHref} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
