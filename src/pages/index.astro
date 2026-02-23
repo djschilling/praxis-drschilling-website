@@ -1,0 +1,172 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const s3BookingUrl = 'https://example.com/s3-terminvergabe';
+---
+
+<MainLayout>
+  <header class="sticky top-0 z-50 border-b border-[color:var(--line)] bg-white/90 backdrop-blur">
+    <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#start" class="text-lg font-semibold text-praxis-deep">Praxis Dr. Schilling</a>
+      <nav class="hidden gap-6 text-sm font-semibold text-[color:var(--text-soft)] md:flex">
+        <a href="#praxis" class="hover:text-praxis-deep">Praxis</a>
+        <a href="#leistungen" class="hover:text-praxis-deep">Leistungen</a>
+        <a href="#termin" class="hover:text-praxis-deep">Termin</a>
+        <a href="#kontakt" class="hover:text-praxis-deep">Kontakt</a>
+      </nav>
+      <a
+        href="#termin"
+        class="rounded-full bg-praxis-deep px-4 py-2 text-sm font-semibold text-white transition hover:bg-praxis-strong"
+      >
+        Termin buchen
+      </a>
+    </div>
+  </header>
+
+  <main id="start">
+    <section class="pattern relative overflow-hidden border-b border-[color:var(--line)]">
+      <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-24">
+        <div>
+          <span class="badge mb-4">Hausarztpraxis in Gomaringen</span>
+          <h1 class="max-w-2xl text-4xl font-bold leading-tight text-praxis-deep sm:text-5xl">
+            Medizin mit Vertrauen. Seit über 100 Jahren in Familienhand.
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-[color:var(--text-soft)]">
+            Die Hausarztpraxis von Dr. Bernd Schilling begleitet Menschen in Gomaringen seit dritter
+            Generation. Persönlich, nahbar und mit einem Team, das viele Jahre gemeinsam für Ihre Gesundheit
+            da ist.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href="#termin"
+              class="rounded-full bg-praxis-accent px-6 py-3 text-sm font-semibold text-white shadow-warm transition hover:opacity-90"
+            >
+              Jetzt Termin anfragen
+            </a>
+            <a
+              href="#kontakt"
+              class="rounded-full border border-[color:var(--line)] bg-white px-6 py-3 text-sm font-semibold text-praxis-deep transition hover:border-praxis-deep"
+            >
+              Anfahrt & Kontakt
+            </a>
+          </div>
+        </div>
+
+        <aside class="card p-6">
+          <h2 class="text-2xl font-bold section-title">Auf einen Blick</h2>
+          <dl class="mt-5 space-y-4 text-sm">
+            <div>
+              <dt class="font-semibold text-praxis-deep">Adresse</dt>
+              <dd class="text-[color:var(--text-soft)]">Lindenstraße 84, 72810 Gomaringen</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-praxis-deep">Praxisprofil</dt>
+              <dd class="text-[color:var(--text-soft)]">
+                Familiäre Hausarztmedizin mit langfristiger Betreuung für alle Generationen.
+              </dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-praxis-deep">Tradition</dt>
+              <dd class="text-[color:var(--text-soft)]">Seit über 100 Jahren, geführt in dritter Generation.</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section id="praxis" class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid gap-6 lg:grid-cols-3">
+        <article class="card p-6">
+          <h3 class="text-xl font-bold section-title">Familiäre Atmosphäre</h3>
+          <p class="mt-3 leading-relaxed text-[color:var(--text-soft)]">
+            Viele Mitarbeitende sind seit Jahren Teil des Teams. Dieses Miteinander sorgt für Verlässlichkeit,
+            kurze Wege und ein vertrauensvolles Umfeld.
+          </p>
+        </article>
+        <article class="card p-6">
+          <h3 class="text-xl font-bold section-title">Hausärztliche Begleitung</h3>
+          <p class="mt-3 leading-relaxed text-[color:var(--text-soft)]">
+            Von Vorsorge bis zur langfristigen Betreuung chronischer Erkrankungen: Wir sind Ihre zentrale
+            Anlaufstelle im Alltag.
+          </p>
+        </article>
+        <article class="card p-6">
+          <h3 class="text-xl font-bold section-title">Stark in Gomaringen verwurzelt</h3>
+          <p class="mt-3 leading-relaxed text-[color:var(--text-soft)]">
+            Als Praxis im Herzen von Gomaringen kennen wir die Menschen vor Ort und begleiten Familien oft über
+            Generationen hinweg.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="leistungen" class="border-y border-[color:var(--line)] bg-white/70">
+      <div class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold section-title sm:text-4xl">Leistungsbereiche</h2>
+        <p class="mt-3 max-w-3xl text-[color:var(--text-soft)]">
+          Wir verbinden moderne hausärztliche Versorgung mit persönlicher Betreuung. Die konkreten Inhalte können
+          bei Bedarf erweitert oder spezifiziert werden.
+        </p>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {['Allgemeinmedizin', 'Vorsorgeuntersuchungen', 'Chronikerbetreuung', 'Impfberatung'].map((item) => (
+            <div class="card px-4 py-5 text-center font-semibold text-praxis-deep">{item}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="termin" class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <span class="badge">Terminvergabe</span>
+          <h2 class="mt-4 text-3xl font-bold section-title sm:text-4xl">Online-Termin über S3</h2>
+          <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
+            Termine können direkt online über unser bestehendes S3-System angefragt werden. Das Modul ist hier
+            eingebettet, damit Patientinnen und Patienten schnell und unkompliziert einen passenden Termin finden.
+          </p>
+          <p class="mt-4 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+            Hinweis: Bitte die URL im Quelltext (`s3BookingUrl`) mit der echten S3-Embed-Adresse der Praxis
+            ersetzen.
+          </p>
+        </div>
+
+        <div class="card overflow-hidden p-2">
+          <iframe
+            src={s3BookingUrl}
+            title="S3 Terminvergabe"
+            class="h-[560px] w-full rounded-lg border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kontakt" class="border-t border-[color:var(--line)] bg-praxis-deep text-white">
+    <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8">
+      <div>
+        <h2 class="text-2xl font-bold">Hausarztpraxis Dr. Bernd Schilling</h2>
+        <p class="mt-3 text-sm leading-relaxed text-white/85">
+          Lindenstraße 84<br />
+          72810 Gomaringen
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold">Kontakt</h3>
+        <p class="mt-3 text-sm text-white/85">
+          Telefon: 07072 / 7031<br />
+          E-Mail: praxis@dr-schilling.de
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold">Sprechzeiten</h3>
+        <p class="mt-3 text-sm text-white/85">
+          Mo-Fr: nach Vereinbarung<br />
+          Akuttermine nach Verfügbarkeit
+        </p>
+      </div>
+    </div>
+  </footer>
+</MainLayout>
