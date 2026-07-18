@@ -3,15 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --bg-sand: #f6f0e8;
-  --bg-warm: #fbf7f2;
-  --text-main: #1e2b2b;
-  --text-soft: #425353;
-  --brand-deep: #1c4f4a;
-  --brand-strong: #23635d;
-  --brand-accent: #cb8b37;
-  --card: #ffffff;
-  --line: #d7e2df;
+  --bg-mist: #eef3f1;
+  --bg-soft: #f7faf8;
+  --bg-deep: #0f2e2a;
+  --text-main: #152826;
+  --text-soft: #3d524e;
+  --brand: #164039;
+  --brand-mid: #1f5a50;
+  --accent: #2f6f7a;
+  --accent-soft: #d7e8eb;
+  --highlight: #c4a35a;
+  --line: #c9d8d3;
+  --surface: rgba(255, 255, 255, 0.72);
 }
 
 html {
@@ -21,55 +24,102 @@ html {
 body {
   margin: 0;
   color: var(--text-main);
-  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  font-family: 'Figtree', 'Segoe UI', sans-serif;
   background:
-    radial-gradient(circle at 10% 10%, #fff6e7 0%, rgba(255, 246, 231, 0) 40%),
-    radial-gradient(circle at 85% 0%, #e8f5ef 0%, rgba(232, 245, 239, 0) 35%),
-    linear-gradient(180deg, var(--bg-sand), var(--bg-warm));
+    radial-gradient(ellipse 80% 50% at 0% 0%, rgba(47, 111, 122, 0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 10%, rgba(196, 163, 90, 0.1), transparent 50%),
+    linear-gradient(180deg, var(--bg-mist) 0%, var(--bg-soft) 45%, #e8efec 100%);
 }
 
 h1,
 h2,
 h3,
-h4 {
-  font-family: 'Bitter', 'Georgia', serif;
-  letter-spacing: -0.01em;
+h4,
+.brand-font {
+  font-family: 'Fraunces', 'Georgia', serif;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
 }
 
-.card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 1.1rem;
-  box-shadow: 0 18px 45px rgba(28, 79, 74, 0.08);
+::selection {
+  background: rgba(47, 111, 122, 0.22);
 }
 
-.pattern {
-  background-image:
-    linear-gradient(0deg, rgba(28, 79, 74, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 79, 74, 0.04) 1px, transparent 1px);
-  background-size: 22px 22px;
+.section-pad {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
 }
 
-.section-title {
-  color: var(--brand-deep);
+.hero-copy {
+  animation: rise-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  border-radius: 999px;
-  border: 1px solid rgba(35, 99, 93, 0.22);
-  padding: 0.4rem 0.8rem;
-  font-size: 0.9rem;
-  color: var(--brand-deep);
-  background: rgba(236, 246, 243, 0.8);
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media (max-width: 768px) {
-  body {
-    background:
-      radial-gradient(circle at 0% 0%, #fff6e7 0%, rgba(255, 246, 231, 0) 32%),
-      linear-gradient(180deg, var(--bg-sand), var(--bg-warm));
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -1.5%, 0) scale(1.03);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-atmosphere {
+  background:
+    linear-gradient(120deg, rgba(15, 46, 42, 0.88) 0%, rgba(22, 64, 57, 0.72) 42%, rgba(47, 111, 122, 0.55) 100%),
+    radial-gradient(circle at 70% 30%, rgba(196, 163, 90, 0.28), transparent 42%),
+    linear-gradient(160deg, #1a4d44 0%, #0f2e2a 55%, #163a48 100%);
+  background-size: 100% 100%, 140% 140%, 200% 200%;
+  animation: shimmer 18s ease-in-out infinite alternate;
+}
+
+.hero-glow {
+  animation: drift 14s ease-in-out infinite;
+}
+
+.site-header {
+  background-color: #f7faf8;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1.5px;
+  transition: background-size 0.25s ease;
+}
+
+.link-underline:hover {
+  background-size: 100% 1.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-copy,
+  .hero-atmosphere,
+  .hero-glow {
+    animation: none !important;
   }
 }

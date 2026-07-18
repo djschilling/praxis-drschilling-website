@@ -5,13 +5,22 @@ export default {
     extend: {
       colors: {
         praxis: {
-          deep: '#1c4f4a',
-          strong: '#23635d',
-          accent: '#cb8b37'
+          deep: '#164039',
+          mid: '#1f5a50',
+          accent: '#2f6f7a',
+          soft: '#d7e8eb',
+          mist: '#eef3f1',
+          highlight: '#c4a35a',
+          ink: '#152826'
         }
       },
+      fontFamily: {
+        display: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['Figtree', 'Segoe UI', 'sans-serif']
+      },
       boxShadow: {
-        warm: '0 22px 55px rgba(28, 79, 74, 0.14)'
+        soft: '0 20px 50px rgba(15, 46, 42, 0.12)',
+        lift: '0 12px 30px rgba(47, 111, 122, 0.16)'
       }
     }
   },

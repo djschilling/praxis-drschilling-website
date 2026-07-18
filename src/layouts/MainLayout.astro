@@ -7,8 +7,9 @@ interface Props {
 }
 
 const {
-  title = 'Hausarztpraxis Dr. Bernd Schilling in Gomaringen',
-  description = 'Familiäre Hausarztpraxis in Gomaringen, Lindenstraße 84. Seit über 100 Jahren in dritter Generation für Patientinnen und Patienten da.'
+  title = 'MVZ Gomaringen – Hausarztpraxis Dr. Bernd Schilling',
+  description =
+    'MVZ Gomaringen der MED-GO e.G.: Hausarztpraxis in der Lindenstraße 84/1. Drei Generationen, persönliche Betreuung und Manuelle Medizin.'
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
@@ -23,13 +24,13 @@ const faviconHref = `${baseUrl}favicon.svg`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#1c4f4a" />
+    <meta name="theme-color" content="#164039" />
     <link rel="icon" type="image/svg+xml" href={faviconHref} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap"
       rel="stylesheet"
     />
   </head>

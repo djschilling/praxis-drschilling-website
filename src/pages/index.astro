@@ -1,22 +1,83 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 
-const s3BookingUrl = 'https://example.com/s3-terminvergabe1';
+const s3BookingUrl = 'https://example.com/s3-terminvergabe';
+
+const leitbild = [
+  {
+    title: 'Drei Generationen, eine Praxis',
+    text: 'Manche unserer Patientinnen und Patienten kennen wir, seit sie selbst noch Kinder waren – und behandeln inzwischen schon ihre eigenen Kinder oder Enkel. Diese Nähe ist für uns kein Zufall, sondern das, was unsere Arbeit besonders macht: Wir sehen nicht nur Befunde und Werte, sondern Menschen mit einer Geschichte. Wer zu uns kommt, muss nicht immer alles von Anfang an erzählen – wir wissen oft schon, woher jemand kommt und was ihn beschäftigt.'
+  },
+  {
+    title: 'Vertrauen, das über Jahre wächst',
+    text: 'Diese Verbindung über Generationen hinweg ist für uns eine Verantwortung, die wir ernst nehmen. Sie bedeutet, dass wir uns Zeit nehmen, zuhören und nachfragen – auch dann, wenn ein Termin eng getaktet ist. Gleichzeitig bleiben wir fachlich auf dem aktuellen Stand, bilden uns regelmäßig fort und passen unsere Abläufe an, wenn wir merken, dass es besser geht.'
+  },
+  {
+    title: 'Miteinander statt nebeneinander',
+    text: 'Eine Praxis mit langer Geschichte lebt von einem Team, das zusammenhält. Wir gehen offen miteinander um, unterstützen uns gegenseitig und sprechen Probleme an, statt sie zu verschweigen. Nur so können wir die Qualität halten, die unsere Patientinnen und Patienten seit Jahrzehnten von uns erwarten.'
+  },
+  {
+    title: 'Erreichbar, wenn es zählt',
+    text: 'Gerade bei dringenden Anliegen wissen unsere Patientinnen und Patienten: Hier werden wir gehört. Wir sind gut erreichbar, bemühen uns um zeitnahe Termine und finden auch kurzfristig eine Lösung, wenn es nötig ist.'
+  }
+];
+
+const leistungen = [
+  'Laboruntersuchungen',
+  'EKG',
+  'Langzeit-Blutdruckmessung',
+  'Spirometrie',
+  'Schellong-Test',
+  'Impfungen',
+  'Wundversorgung',
+  'U-Untersuchungen',
+  'Gesundheitsuntersuchung (Check-up 35)',
+  'Hautkrebs-Screening',
+  'Vorsorge für Männer ab 45 Jahre',
+  'DMP Diabetes mellitus',
+  'Präoperative Untersuchungen',
+  'Jugendschutzuntersuchung',
+  'Führerscheinuntersuchung',
+  'Glisson-Schlinge',
+  'Atlastherapie'
+];
+
+const aerzte = ['Dr. med. B. Schilling', 'J. Osmaston', 'Dr. med. C. Riesner'];
+const team = ['Frau Schilling', 'Frau Neth', 'Frau Rieger', 'Frau Rauschenbach', 'Frau Merz'];
+
+const oeffnungszeiten = [
+  { tag: 'Montag', zeit: '8:00 – 12:00 und 16:00 – 18:00 Uhr' },
+  { tag: 'Dienstag', zeit: '8:00 – 12:00 Uhr' },
+  { tag: 'Mittwoch', zeit: '8:00 – 12:00 und 16:00 – 18:00 Uhr' },
+  { tag: 'Donnerstag', zeit: '8:00 – 12:00 Uhr' },
+  { tag: 'Freitag', zeit: '8:00 – 12:00 und 15:00 – 16:00 Uhr' }
+];
+
+const notfall = [
+  { label: 'Notarzt / Rettungsdienst', nummer: '112' },
+  { label: 'Ärztlicher Bereitschaftsdienst', nummer: '116 117' },
+  { label: 'Apothekenbereitschaft', nummer: '0800 0022833' },
+  { label: 'Giftnotruf Baden-Württemberg', nummer: '0761 19240' }
+];
 ---
 
 <MainLayout>
-  <header class="sticky top-0 z-50 border-b border-[color:var(--line)] bg-white/90 backdrop-blur">
-    <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-      <a href="#start" class="text-lg font-semibold text-praxis-deep">Praxis Dr. Schilling</a>
-      <nav class="hidden gap-6 text-sm font-semibold text-[color:var(--text-soft)] md:flex">
-        <a href="#praxis" class="hover:text-praxis-deep">Praxis</a>
-        <a href="#leistungen" class="hover:text-praxis-deep">Leistungen</a>
-        <a href="#termin" class="hover:text-praxis-deep">Termin</a>
-        <a href="#kontakt" class="hover:text-praxis-deep">Kontakt</a>
+  <header class="site-header sticky top-0 z-50 border-b border-[color:var(--line)] text-praxis-deep shadow-sm">
+    <div class="section-pad flex items-center justify-between gap-4 py-3.5">
+      <a href="#start" class="brand-font text-lg font-semibold tracking-tight text-praxis-deep sm:text-xl">
+        MVZ Gomaringen
+      </a>
+      <nav class="hidden items-center gap-7 text-sm font-semibold text-praxis-ink lg:flex" aria-label="Hauptnavigation">
+        <a href="#leitbild" class="link-underline hover:text-praxis-accent">Leitbild</a>
+        <a href="#manuelle-medizin" class="link-underline hover:text-praxis-accent">Manuelle Medizin</a>
+        <a href="#leistungen" class="link-underline hover:text-praxis-accent">Leistungen</a>
+        <a href="#team" class="link-underline hover:text-praxis-accent">Team</a>
+        <a href="#termin" class="link-underline hover:text-praxis-accent">Termin</a>
+        <a href="#kontakt" class="link-underline hover:text-praxis-accent">Kontakt</a>
       </nav>
       <a
         href="#termin"
-        class="rounded-full bg-praxis-deep px-4 py-2 text-sm font-semibold text-white transition hover:bg-praxis-strong"
+        class="rounded-md bg-praxis-deep px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-praxis-mid"
       >
         Termin buchen
       </a>
@@ -24,149 +85,277 @@ const s3BookingUrl = 'https://example.com/s3-terminvergabe1';
   </header>
 
   <main id="start">
-    <section class="pattern relative overflow-hidden border-b border-[color:var(--line)]">
-      <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-24">
-        <div>
-          <span class="badge mb-4">Hausarztpraxis in Gomaringen</span>
-          <h1 class="max-w-2xl text-4xl font-bold leading-tight text-praxis-deep sm:text-5xl">
-            Medizin mit Vertrauen. Seit über 100 Jahren in Familienhand.
-          </h1>
-          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-[color:var(--text-soft)]">
-            Die Hausarztpraxis von Dr. Bernd Schilling begleitet Menschen in Gomaringen seit dritter
-            Generation. Persönlich, nahbar und mit einem Team, das viele Jahre gemeinsam für Ihre Gesundheit
-            da ist.
+    <!-- Hero: eine Komposition, Brand zuerst, vollflächig -->
+    <section class="hero-atmosphere relative min-h-[88vh] overflow-hidden text-white">
+      <div
+        class="hero-glow pointer-events-none absolute -right-16 top-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(215,232,235,0.22),transparent_65%)]"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute inset-0 opacity-30"
+        style="background-image: radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px); background-size: 28px 28px;"
+        aria-hidden="true"
+      ></div>
+
+      <div class="section-pad relative flex min-h-[88vh] flex-col justify-center py-28 sm:py-32">
+        <div class="hero-copy max-w-3xl">
+          <p class="brand-font text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-7xl">
+            MVZ Gomaringen
           </p>
-          <div class="mt-8 flex flex-wrap gap-3">
+          <p class="mt-4 text-base font-medium text-white/85 sm:text-lg">
+            der MED-GO e.G. · Hausarztpraxis Dr. Bernd Schilling
+          </p>
+          <h1 class="mt-8 text-2xl font-medium leading-snug text-white sm:text-3xl lg:text-[2.35rem] lg:leading-snug">
+            Drei Generationen, eine Praxis – Medizin mit Nähe und Verantwortung.
+          </h1>
+          <p class="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
+            Wir begleiten Familien in Gomaringen oft über Jahrzehnte – persönlich, erreichbar und mit Blick auf den ganzen Menschen.
+          </p>
+          <div class="mt-9 flex flex-wrap gap-3">
             <a
               href="#termin"
-              class="rounded-full bg-praxis-accent px-6 py-3 text-sm font-semibold text-white shadow-warm transition hover:opacity-90"
+              class="rounded-md bg-white px-5 py-3 text-sm font-semibold text-praxis-deep shadow-lift transition hover:bg-praxis-soft"
             >
-              Jetzt Termin anfragen
+              Online Termin anfragen
             </a>
             <a
-              href="#kontakt"
-              class="rounded-full border border-[color:var(--line)] bg-white px-6 py-3 text-sm font-semibold text-praxis-deep transition hover:border-praxis-deep"
+              href="tel:+4970727031"
+              class="rounded-md border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
             >
-              Anfahrt & Kontakt
+              07072 / 7031
             </a>
           </div>
         </div>
+      </div>
+    </section>
 
-        <aside class="card p-6">
-          <h2 class="text-2xl font-bold section-title">Auf einen Blick</h2>
-          <dl class="mt-5 space-y-4 text-sm">
-            <div>
-              <dt class="font-semibold text-praxis-deep">Adresse</dt>
-              <dd class="text-[color:var(--text-soft)]">Lindenstraße 84, 72810 Gomaringen</dd>
-            </div>
-            <div>
-              <dt class="font-semibold text-praxis-deep">Praxisprofil</dt>
-              <dd class="text-[color:var(--text-soft)]">
-                Familiäre Hausarztmedizin mit langfristiger Betreuung für alle Generationen.
-              </dd>
-            </div>
-            <div>
-              <dt class="font-semibold text-praxis-deep">Tradition</dt>
-              <dd class="text-[color:var(--text-soft)]">Seit über 100 Jahren, geführt in dritter Generation.</dd>
-            </div>
-          </dl>
+    <!-- Leitbild -->
+    <section id="leitbild" class="section-pad py-20 sm:py-24">
+      <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Unser Leitbild</p>
+      <h2 class="mt-3 max-w-2xl text-3xl font-semibold text-praxis-deep sm:text-4xl">
+        Was uns als Praxis ausmacht
+      </h2>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[color:var(--text-soft)]">
+        Vier Grundsätze begleiten unsere Arbeit – vom ersten Gespräch bis zur langfristigen Betreuung.
+      </p>
+
+      <div class="mt-12 grid gap-10 md:grid-cols-2">
+        {
+          leitbild.map((item, index) => (
+            <article class="border-t border-[color:var(--line)] pt-6">
+              <span class="text-sm font-semibold text-praxis-accent">0{index + 1}</span>
+              <h3 class="mt-2 text-2xl font-semibold text-praxis-deep">{item.title}</h3>
+              <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Manuelle Medizin – Alleinstellungsmerkmal -->
+    <section id="manuelle-medizin" class="relative overflow-hidden bg-praxis-deep text-white">
+      <div
+        class="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(47,111,122,0.45),transparent_70%)]"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(196,163,90,0.2),transparent_70%)]"
+        aria-hidden="true"
+      ></div>
+
+      <div class="section-pad relative grid gap-10 py-20 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-highlight">
+            Unser Schwerpunkt
+          </p>
+          <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Manuelle Medizin</h2>
+          <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/80">
+            Als besondere Kompetenz unserer Praxis verbinden wir hausärztliche Versorgung mit Manueller Medizin.
+            Blockaden, Verspannungen und Funktionsstörungen behandeln wir mit gezielten, schonenden Techniken –
+            oft eine sinnvolle Ergänzung zur klassischen Diagnostik und Therapie.
+          </p>
+          <p class="mt-4 max-w-xl leading-relaxed text-white/70">
+            Dazu gehören unter anderem Atlastherapie und die Glisson-Schlinge. Sprechen Sie uns an, wenn
+            Beschwerden am Bewegungsapparat Sie belasten – wir prüfen gemeinsam, was für Sie passt.
+          </p>
+        </div>
+
+        <aside class="border border-white/15 bg-white/5 p-7 backdrop-blur-sm">
+          <h3 class="text-xl font-semibold">Was Sie erwarten können</h3>
+          <ul class="mt-5 space-y-4 text-white/80">
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-praxis-highlight"></span>
+              <span>Individuelle Untersuchung mit Blick auf Haltung, Bewegung und Beschwerdebild</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-praxis-highlight"></span>
+              <span>Manuelle Techniken als Ergänzung zur hausärztlichen Behandlung</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-praxis-highlight"></span>
+              <span>Erfahrung aus einer Praxis mit langjähriger Tradition vor Ort</span>
+            </li>
+          </ul>
+          <a
+            href="#termin"
+            class="mt-8 inline-flex rounded-md bg-praxis-highlight px-4 py-2.5 text-sm font-semibold text-praxis-deep transition hover:brightness-110"
+          >
+            Termin für Manuelle Medizin
+          </a>
         </aside>
       </div>
     </section>
 
-    <section id="praxis" class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-      <div class="grid gap-6 lg:grid-cols-3">
-        <article class="card p-6">
-          <h3 class="text-xl font-bold section-title">Familiäre Atmosphäre</h3>
-          <p class="mt-3 leading-relaxed text-[color:var(--text-soft)]">
-            Viele Mitarbeitende sind seit Jahren Teil des Teams. Dieses Miteinander sorgt für Verlässlichkeit,
-            kurze Wege und ein vertrauensvolles Umfeld.
-          </p>
-        </article>
-        <article class="card p-6">
-          <h3 class="text-xl font-bold section-title">Hausärztliche Begleitung</h3>
-          <p class="mt-3 leading-relaxed text-[color:var(--text-soft)]">
-            Von Vorsorge bis zur langfristigen Betreuung chronischer Erkrankungen: Wir sind Ihre zentrale
-            Anlaufstelle im Alltag.
-          </p>
-        </article>
-        <article class="card p-6">
-          <h3 class="text-xl font-bold section-title">Stark in Gomaringen verwurzelt</h3>
-          <p class="mt-3 leading-relaxed text-[color:var(--text-soft)]">
-            Als Praxis im Herzen von Gomaringen kennen wir die Menschen vor Ort und begleiten Familien oft über
-            Generationen hinweg.
-          </p>
-        </article>
-      </div>
+    <!-- Leistungen -->
+    <section id="leistungen" class="section-pad py-20 sm:py-24">
+      <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Ärztliche Leistungen</p>
+      <h2 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Hausärztliche Versorgung</h2>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[color:var(--text-soft)]">
+        Von Vorsorge und Diagnostik bis zur Versorgung chronischer Erkrankungen – ein Überblick über unser
+        Spektrum. Manuelle Medizin finden Sie gesondert hervorgehoben oben.
+      </p>
+
+      <ul class="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          leistungen.map((item) => (
+            <li class="flex items-start gap-3 border-b border-[color:var(--line)] py-3 text-[color:var(--text-soft)]">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-praxis-mid"></span>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
-    <section id="leistungen" class="border-y border-[color:var(--line)] bg-white/70">
-      <div class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold section-title sm:text-4xl">Leistungsbereiche</h2>
-        <p class="mt-3 max-w-3xl text-[color:var(--text-soft)]">
-          Wir verbinden moderne hausärztliche Versorgung mit persönlicher Betreuung. Die konkreten Inhalte können
-          bei Bedarf erweitert oder spezifiziert werden.
+    <!-- Team -->
+    <section id="team" class="border-y border-[color:var(--line)] bg-white/50">
+      <div class="section-pad py-20 sm:py-24">
+        <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Menschen vor Ort</p>
+        <h2 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Ärztinnen, Ärzte und Team</h2>
+        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[color:var(--text-soft)]">
+          Ein eingespieltes Praxisteam, das zusammenhält – und Patientinnen und Patienten oft über viele Jahre
+          begleitet.
         </p>
 
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {['Allgemeinmedizin', 'Vorsorgeuntersuchungen', 'Chronikerbetreuung', 'Impfberatung'].map((item) => (
-            <div class="card px-4 py-5 text-center font-semibold text-praxis-deep">{item}</div>
-          ))}
+        <div class="mt-12 grid gap-12 lg:grid-cols-2">
+          <div>
+            <h3 class="text-xl font-semibold text-praxis-deep">Ärztliche Leitung</h3>
+            <ul class="mt-5 space-y-3">
+              {
+                aerzte.map((name) => (
+                  <li class="border-l-2 border-praxis-accent pl-4 text-lg text-[color:var(--text-soft)]">{name}</li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-praxis-deep">Praxisteam</h3>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              {
+                team.map((name) => (
+                  <li class="border border-[color:var(--line)] bg-white px-3.5 py-2 text-[color:var(--text-soft)]">
+                    {name}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="termin" class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-      <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+    <!-- Termin -->
+    <section id="termin" class="section-pad py-20 sm:py-24">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div>
-          <span class="badge">Terminvergabe</span>
-          <h2 class="mt-4 text-3xl font-bold section-title sm:text-4xl">Online-Termin über S3</h2>
+          <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Terminvergabe</p>
+          <h2 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Termin vereinbaren</h2>
           <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
-            Termine können direkt online über unser bestehendes S3-System angefragt werden. Das Modul ist hier
-            eingebettet, damit Patientinnen und Patienten schnell und unkompliziert einen passenden Termin finden.
+            Wir sind eine Bestellpraxis – bitte vereinbaren Sie Ihren Termin immer vorab. Online können Sie
+            ausgewählte Sprechstundentermine direkt buchen; telefonisch sind wir unter
+            <a href="tel:+4970727031" class="font-semibold text-praxis-deep link-underline">07072 / 7031</a>
+            erreichbar.
           </p>
-          <p class="mt-4 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
-            Hinweis: Bitte die URL im Quelltext (`s3BookingUrl`) mit der echten S3-Embed-Adresse der Praxis
-            ersetzen.
+          <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
+            Wiederholungsrezepte und Überweisungen können Sie per Telefon oder E-Mail anfordern und in der Regel
+            am Folgetag abholen.
+          </p>
+          <p class="mt-6 border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+            Hinweis für die Einrichtung: Bitte die echte S3-Embed-URL in <code class="font-mono">s3BookingUrl</code>
+            eintragen.
           </p>
         </div>
 
-        <div class="card overflow-hidden p-2">
+        <div class="overflow-hidden border border-[color:var(--line)] bg-white shadow-soft">
           <iframe
             src={s3BookingUrl}
-            title="S3 Terminvergabe"
-            class="h-[560px] w-full rounded-lg border-0"
+            title="Online-Terminvergabe"
+            class="h-[560px] w-full border-0"
             loading="lazy"
             referrerpolicy="no-referrer"
           ></iframe>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer id="kontakt" class="border-t border-[color:var(--line)] bg-praxis-deep text-white">
-    <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8">
-      <div>
-        <h2 class="text-2xl font-bold">Hausarztpraxis Dr. Bernd Schilling</h2>
-        <p class="mt-3 text-sm leading-relaxed text-white/85">
-          Lindenstraße 84<br />
-          72810 Gomaringen
-        </p>
+    <!-- Kontakt & Zeiten -->
+    <section id="kontakt" class="border-t border-[color:var(--line)] bg-[color:var(--bg-deep)] text-white">
+      <div class="section-pad grid gap-12 py-20 sm:py-24 lg:grid-cols-3">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-highlight">Kontakt</p>
+          <h2 class="mt-3 text-3xl font-semibold">So erreichen Sie uns</h2>
+          <address class="mt-6 not-italic leading-relaxed text-white/80">
+            MVZ Gomaringen der MED-GO e.G.<br />
+            Lindenstraße 84/1<br />
+            72810 Gomaringen
+          </address>
+          <p class="mt-5 space-y-1 text-white/80">
+            <a href="tel:+4970727031" class="block font-semibold text-white link-underline">Telefon: 07072 / 7031</a>
+            <span class="block">Fax: 07072 / 912690</span>
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold">Öffnungszeiten</h3>
+          <dl class="mt-5 space-y-3 text-sm">
+            {
+              oeffnungszeiten.map((eintrag) => (
+                <div class="grid grid-cols-[7rem_1fr] gap-2 border-b border-white/10 pb-2">
+                  <dt class="font-semibold text-white">{eintrag.tag}</dt>
+                  <dd class="text-white/75">{eintrag.zeit}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <p class="mt-4 text-sm text-white/65">Bitte immer vorab einen Termin vereinbaren.</p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold">Im Notfall</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            {
+              notfall.map((eintrag) => (
+                <li class="border-b border-white/10 pb-2">
+                  <p class="text-white/65">{eintrag.label}</p>
+                  <a
+                    href={`tel:${eintrag.nummer.replace(/\s/g, '')}`}
+                    class="font-semibold text-white link-underline"
+                  >
+                    {eintrag.nummer}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
-      <div>
-        <h3 class="text-lg font-semibold">Kontakt</h3>
-        <p class="mt-3 text-sm text-white/85">
-          Telefon: 07072 / 7031<br />
-          E-Mail: praxis@dr-schilling.de
-        </p>
+
+      <div class="border-t border-white/10">
+        <div class="section-pad flex flex-col gap-2 py-6 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} MVZ Gomaringen der MED-GO e.G.</p>
+          <p>Hausarztpraxis · Lindenstraße 84/1 · Gomaringen</p>
+        </div>
       </div>
-      <div>
-        <h3 class="text-lg font-semibold">Sprechzeiten</h3>
-        <p class="mt-3 text-sm text-white/85">
-          Mo-Fr: nach Vereinbarung<br />
-          Akuttermine nach Verfügbarkeit
-        </p>
-      </div>
-    </div>
-  </footer>
+    </section>
+  </main>
 </MainLayout>
