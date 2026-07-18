@@ -23,6 +23,7 @@ const leitbild = [
 ];
 
 const leistungen = [
+  'Psychosomatische Grundversorgung',
   'Laboruntersuchungen',
   'EKG',
   'Langzeit-Blutdruckmessung',
@@ -39,7 +40,7 @@ const leistungen = [
   'Jugendschutzuntersuchung',
   'Führerscheinuntersuchung',
   'Glisson-Schlinge',
-  'Atlastherapie'
+  'Reset-Therapie'
 ];
 
 const aerzte = ['Dr. med. B. Schilling', 'J. Osmaston', 'Dr. med. C. Riesner'];
@@ -69,6 +70,7 @@ const notfall = [
       </a>
       <nav class="hidden items-center gap-7 text-sm font-semibold text-praxis-ink lg:flex" aria-label="Hauptnavigation">
         <a href="#leitbild" class="link-underline hover:text-praxis-accent">Leitbild</a>
+        <a href="#schwerpunkt" class="link-underline hover:text-praxis-accent">Schwerpunkt</a>
         <a href="#manuelle-medizin" class="link-underline hover:text-praxis-accent">Manuelle Medizin</a>
         <a href="#leistungen" class="link-underline hover:text-praxis-accent">Leistungen</a>
         <a href="#team" class="link-underline hover:text-praxis-accent">Team</a>
@@ -106,10 +108,10 @@ const notfall = [
             der MED-GO e.G. · Hausarztpraxis Dr. Bernd Schilling
           </p>
           <h1 class="mt-8 text-2xl font-medium leading-snug text-white sm:text-3xl lg:text-[2.35rem] lg:leading-snug">
-            Drei Generationen, eine Praxis – Medizin mit Nähe und Verantwortung.
+            Hausärztliche Grundversorgung und Familienmedizin – mit Nähe und Verantwortung.
           </h1>
           <p class="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
-            Wir begleiten Familien in Gomaringen oft über Jahrzehnte – persönlich, erreichbar und mit Blick auf den ganzen Menschen.
+            Wir begleiten Familien in Gomaringen oft über Jahrzehnte. Manuelle Medizin bieten wir zusätzlich an – etwas, das viele Praxen so nicht haben.
           </p>
           <div class="mt-9 flex flex-wrap gap-3">
             <a
@@ -152,7 +154,26 @@ const notfall = [
       </div>
     </section>
 
-    <!-- Manuelle Medizin – Alleinstellungsmerkmal -->
+    <!-- Schwerpunkt -->
+    <section id="schwerpunkt" class="border-y border-[color:var(--line)] bg-white/50">
+      <div class="section-pad py-20 sm:py-24">
+        <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Unser Schwerpunkt</p>
+        <h2 class="mt-3 max-w-3xl text-3xl font-semibold text-praxis-deep sm:text-4xl">
+          Hausärztliche Grundversorgung und Familienmedizin
+        </h2>
+        <p class="mt-5 max-w-3xl text-lg leading-relaxed text-[color:var(--text-soft)]">
+          Im Mittelpunkt steht die hausärztliche Betreuung für die ganze Familie – von der Vorsorge über akute
+          Beschwerden bis zur langfristigen Begleitung chronischer Erkrankungen. Wir sind Ihre erste Anlaufstelle
+          im Alltag und kennen oft die Geschichte hinter dem aktuellen Anliegen.
+        </p>
+        <p class="mt-4 max-w-3xl leading-relaxed text-[color:var(--text-soft)]">
+          Dazu kommt bei uns etwas, das viele Praxen so nicht anbieten: Manuelle Medizin als sinnvolle Ergänzung
+          zur klassischen hausärztlichen Versorgung.
+        </p>
+      </div>
+    </section>
+
+    <!-- Manuelle Medizin – Besonderheit -->
     <section id="manuelle-medizin" class="relative overflow-hidden bg-praxis-deep text-white">
       <div
         class="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(47,111,122,0.45),transparent_70%)]"
@@ -166,17 +187,18 @@ const notfall = [
       <div class="section-pad relative grid gap-10 py-20 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
           <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-highlight">
-            Unser Schwerpunkt
+            Besonders bei uns
           </p>
           <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Manuelle Medizin</h2>
           <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/80">
-            Als besondere Kompetenz unserer Praxis verbinden wir hausärztliche Versorgung mit Manueller Medizin.
-            Blockaden, Verspannungen und Funktionsstörungen behandeln wir mit gezielten, schonenden Techniken –
-            oft eine sinnvolle Ergänzung zur klassischen Diagnostik und Therapie.
+            Zusätzlich zur hausärztlichen Grundversorgung bieten wir Manuelle Medizin an – ein Angebot, das
+            viele Praxen so nicht haben. Blockaden, Verspannungen und Funktionsstörungen behandeln wir mit
+            gezielten, schonenden Techniken.
           </p>
           <p class="mt-4 max-w-xl leading-relaxed text-white/70">
-            Dazu gehören unter anderem Atlastherapie und die Glisson-Schlinge. Sprechen Sie uns an, wenn
-            Beschwerden am Bewegungsapparat Sie belasten – wir prüfen gemeinsam, was für Sie passt.
+            Eine Besonderheit unserer Praxis ist die Reset-Therapie. Ergänzend nutzen wir unter anderem die
+            Glisson-Schlinge. Sprechen Sie uns an, wenn Beschwerden am Bewegungsapparat Sie belasten – wir
+            prüfen gemeinsam, was für Sie passt.
           </p>
         </div>
 
@@ -185,22 +207,22 @@ const notfall = [
           <ul class="mt-5 space-y-4 text-white/80">
             <li class="flex gap-3">
               <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-praxis-highlight"></span>
+              <span>Reset-Therapie als besondere Kompetenz unserer Praxis</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-praxis-highlight"></span>
+              <span>Ergänzung zur hausärztlichen Grundversorgung, nicht Ersatz dafür</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-praxis-highlight"></span>
               <span>Individuelle Untersuchung mit Blick auf Haltung, Bewegung und Beschwerdebild</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-praxis-highlight"></span>
-              <span>Manuelle Techniken als Ergänzung zur hausärztlichen Behandlung</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-praxis-highlight"></span>
-              <span>Erfahrung aus einer Praxis mit langjähriger Tradition vor Ort</span>
             </li>
           </ul>
           <a
             href="#termin"
             class="mt-8 inline-flex rounded-md bg-praxis-highlight px-4 py-2.5 text-sm font-semibold text-praxis-deep transition hover:brightness-110"
           >
-            Termin für Manuelle Medizin
+            Termin anfragen
           </a>
         </aside>
       </div>
@@ -209,10 +231,10 @@ const notfall = [
     <!-- Leistungen -->
     <section id="leistungen" class="section-pad py-20 sm:py-24">
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Ärztliche Leistungen</p>
-      <h2 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Hausärztliche Versorgung</h2>
+      <h2 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Unser Leistungsspektrum</h2>
       <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[color:var(--text-soft)]">
-        Von Vorsorge und Diagnostik bis zur Versorgung chronischer Erkrankungen – ein Überblick über unser
-        Spektrum. Manuelle Medizin finden Sie gesondert hervorgehoben oben.
+        Von Vorsorge und Diagnostik bis zur psychosomatischen und chronischen Betreuung – ein Überblick über
+        unser Spektrum in der hausärztlichen Grundversorgung.
       </p>
 
       <ul class="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
