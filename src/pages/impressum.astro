@@ -1,0 +1,169 @@
+---
+import SiteChrome from '../components/SiteChrome.astro';
+import { praxis } from '../data/praxis';
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title={`Impressum – ${praxis.shortName}`}
+  description={`Impressum und Anbieterkennzeichnung des ${praxis.legalName} in ${praxis.city}.`}
+>
+  <SiteChrome current="impressum">
+    <main class="section-pad py-16 sm:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Rechtliches</p>
+      <h1 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Impressum</h1>
+      <p class="mt-4 max-w-2xl leading-relaxed text-[color:var(--text-soft)]">
+        Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG) und § 18 Abs. 2 Medienstaatsvertrag (MStV).
+      </p>
+
+      <div class="prose-legal mt-12 max-w-3xl space-y-10 text-[color:var(--text-soft)]">
+        <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">Anbieter</h2>
+          <address class="mt-3 not-italic leading-relaxed">
+            {praxis.legalName}<br />
+            {praxis.street}<br />
+            {praxis.zip} {praxis.city}<br />
+            Deutschland
+          </address>
+          <p class="mt-3 leading-relaxed">
+            Träger des Medizinischen Versorgungszentrums ist die {praxis.provider}.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">Kontakt</h2>
+          <ul class="mt-3 space-y-1 leading-relaxed">
+            <li>
+              Telefon:
+              <a href={`tel:${praxis.phoneTel}`} class="font-semibold text-praxis-deep link-underline">
+                {praxis.phoneDisplay}
+              </a>
+            </li>
+            <li>Fax: {praxis.faxDisplay}</li>
+            <li>
+              E-Mail:
+              <a href={`mailto:${praxis.email}`} class="font-semibold text-praxis-deep link-underline">
+                {praxis.email}
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">Vertretung / Register</h2>
+          <p class="mt-3 leading-relaxed">
+            Die {praxis.provider} wird durch ihren Vorstand vertreten.
+          </p>
+          <p class="mt-3 leading-relaxed">
+            Register: {praxis.register}
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">
+            Inhaltlich verantwortlich nach § 18 Abs. 2 MStV
+          </h2>
+          <p class="mt-3 leading-relaxed">
+            {praxis.responsibleContent}<br />
+            {praxis.street}<br />
+            {praxis.zip} {praxis.city}
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">Angaben zur ärztlichen Tätigkeit</h2>
+          <dl class="mt-3 space-y-4 leading-relaxed">
+            <div>
+              <dt class="font-semibold text-praxis-deep">Berufsbezeichnung</dt>
+              <dd class="mt-1">{praxis.professionalTitle} (verliehen in der Bundesrepublik Deutschland bzw. einem Mitgliedstaat der EU/EWR)</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-praxis-deep">Zuständige Ärztekammer</dt>
+              <dd class="mt-1">
+                {praxis.medicalChamber}<br />
+                Jahnstraße 40, 70597 Stuttgart<br />
+                <a
+                  href="https://www.aerztekammer-bw.de"
+                  class="font-semibold text-praxis-deep link-underline"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  www.aerztekammer-bw.de
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-praxis-deep">Zuständige Kassenärztliche Vereinigung</dt>
+              <dd class="mt-1">
+                {praxis.kv}<br />
+                Albstadtweg 11, 70567 Stuttgart<br />
+                <a
+                  href="https://www.kvbawue.de"
+                  class="font-semibold text-praxis-deep link-underline"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  www.kvbawue.de
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-praxis-deep">Berufsrechtliche Regelungen</dt>
+              <dd class="mt-1">
+                <ul class="list-disc space-y-1 pl-5">
+                  {praxis.professionalRules.map((rule) => <li>{rule}</li>)}
+                </ul>
+                <p class="mt-2">
+                  Die geltenden berufsrechtlichen Regelungen sind über die Website der Landesärztekammer
+                  Baden-Württemberg einsehbar.
+                </p>
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">Haftung für Inhalte</h2>
+          <p class="mt-3 leading-relaxed">
+            Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den
+            allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht
+            verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+            zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+          </p>
+          <p class="mt-3 leading-relaxed">
+            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen
+            Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+            Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
+            Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">Haftung für Links</h2>
+          <p class="mt-3 leading-relaxed">
+            Unser Angebot kann Links zu externen Websites Dritter enthalten, auf deren Inhalte wir keinen Einfluss
+            haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+            verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die
+            verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft.
+            Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+          </p>
+          <p class="mt-3 leading-relaxed">
+            Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte einer
+            Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links
+            umgehend entfernen.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">Urheberrecht</h2>
+          <p class="mt-3 leading-relaxed">
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+            Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
+            Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+            Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+          </p>
+        </section>
+      </div>
+    </main>
+  </SiteChrome>
+</MainLayout>

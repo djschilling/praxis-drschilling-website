@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 64" role="img" aria-label="MVZ Gomaringen">
+  <defs>
+    <linearGradient id="logoMarkBg" x1="10" y1="6" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1f5a50"/>
+      <stop offset="100%" stop-color="#0f2e2a"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="64" height="64" rx="18" fill="url(#logoMarkBg)"/>
+  <path
+    d="M16 34.5c4.2-8.8 9.8-13.2 16-13.2s11.8 4.4 16 13.2"
+    fill="none"
+    stroke="#d7e8eb"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+  <circle cx="22.5" cy="42" r="4.2" fill="#8eb8bf"/>
+  <circle cx="32" cy="40.5" r="5" fill="#f7faf8"/>
+  <circle cx="41.5" cy="42" r="4.2" fill="#c4a35a"/>
+
+  <text
+    x="80"
+    y="30"
+    fill="#164039"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="22"
+    font-weight="600"
+    letter-spacing="-0.02em"
+  >MVZ Gomaringen</text>
+  <text
+    x="80"
+    y="48"
+    fill="#3d524e"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="11"
+    font-weight="500"
+    letter-spacing="0.02em"
+  >Haus&#228;rztliche Grundversorgung &#183; Familienmedizin</text>
+</svg>

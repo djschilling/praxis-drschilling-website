@@ -1,21 +1,32 @@
 ---
 import '../styles/global.css';
+import { praxis } from '../data/praxis';
 
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
 }
 
 const {
   title = 'MVZ Gomaringen – Hausarztpraxis Dr. Bernd Schilling',
   description =
-    'MVZ Gomaringen der MED-GO e.G.: Hausärztliche Grundversorgung · Familienmedizin in der Lindenstraße 84/1 – mit Manueller Medizin als besonderem Angebot.'
+    'MVZ Gomaringen der MED-GO e.G.: Hausärztliche Grundversorgung · Familienmedizin in der Lindenstraße 84/1 – mit Manueller Medizin als besonderem Angebot.',
+  ogType = 'website'
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const faviconHref = `${baseUrl}favicon.svg`;
+
+const siteOrigin = (Astro.site?.origin ?? praxis.website).replace(/\/$/, '');
+const canonicalURL = new URL(Astro.url.pathname, `${siteOrigin}/`);
+const defaultOgImage = new URL(`${baseUrl}images/team/praxis-team.jpg`, `${siteOrigin}/`);
+const ogImageURL = Astro.props.ogImage
+  ? new URL(Astro.props.ogImage, `${siteOrigin}/`)
+  : defaultOgImage;
 ---
 
 <!doctype html>
@@ -25,8 +36,24 @@ const faviconHref = `${baseUrl}favicon.svg`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#164039" />
+    <link rel="canonical" href={canonicalURL.href} />
     <link rel="icon" type="image/svg+xml" href={faviconHref} />
     <title>{title}</title>
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content={praxis.shortName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:image" content={ogImageURL.href} />
+    <meta property="og:image:alt" content="Praxisteam des MVZ Gomaringen" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL.href} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

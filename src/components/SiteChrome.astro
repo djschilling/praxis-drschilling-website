@@ -1,0 +1,57 @@
+---
+import { praxis } from '../data/praxis';
+
+interface Props {
+  current?: 'home' | 'impressum' | 'datenschutz';
+}
+
+const { current = 'home' } = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const homeHref = baseUrl;
+const impressumHref = `${baseUrl}impressum/`;
+const datenschutzHref = `${baseUrl}datenschutz/`;
+---
+
+<header class="site-header sticky top-0 z-50 border-b border-[color:var(--line)] text-praxis-deep shadow-sm">
+  <div class="section-pad flex items-center justify-between gap-4 py-3.5">
+    <a href={homeHref} class="brand-font text-lg font-semibold tracking-tight text-praxis-deep sm:text-xl">
+      {praxis.shortName}
+    </a>
+    <nav class="flex items-center gap-5 text-sm font-semibold text-praxis-ink" aria-label="Rechtliche Navigation">
+      <a
+        href={homeHref}
+        class:list={['link-underline hover:text-praxis-accent', current === 'home' && 'text-praxis-accent']}
+      >
+        Startseite
+      </a>
+      <a
+        href={impressumHref}
+        class:list={['link-underline hover:text-praxis-accent', current === 'impressum' && 'text-praxis-accent']}
+      >
+        Impressum
+      </a>
+      <a
+        href={datenschutzHref}
+        class:list={['link-underline hover:text-praxis-accent', current === 'datenschutz' && 'text-praxis-accent']}
+      >
+        Datenschutz
+      </a>
+    </nav>
+  </div>
+</header>
+
+<slot />
+
+<footer class="border-t border-white/10 bg-[color:var(--bg-deep)] text-white">
+  <div class="section-pad flex flex-col gap-3 py-6 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
+    <p>© {new Date().getFullYear()} {praxis.legalName}</p>
+    <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="Fußzeile">
+      <a href={impressumHref} class="text-white/70 link-underline hover:text-white">Impressum</a>
+      <a href={datenschutzHref} class="text-white/70 link-underline hover:text-white">Datenschutz</a>
+    </nav>
+  </div>
+</footer>

@@ -417,9 +417,12 @@ const notfall = [
       </div>
 
       <div class="border-t border-white/10">
-        <div class="section-pad flex flex-col gap-2 py-6 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
+        <div class="section-pad flex flex-col gap-3 py-6 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} MVZ Gomaringen der MED-GO e.G.</p>
-          <p>Hausarztpraxis · Lindenstraße 84/1 · Gomaringen</p>
+          <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="Rechtliche Hinweise">
+            <a href={`${baseUrl}impressum/`} class="text-white/70 link-underline hover:text-white">Impressum</a>
+            <a href={`${baseUrl}datenschutz/`} class="text-white/70 link-underline hover:text-white">Datenschutz</a>
+          </nav>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1];
@@ -8,5 +9,5 @@ const base = process.env.ASTRO_BASE ?? (isGitHubActions && repoName ? `/${repoNa
 export default defineConfig({
   site: 'https://praxis-dr-schilling.de',
   base,
-  integrations: [tailwind()]
+  integrations: [tailwind(), sitemap()]
 });
