@@ -6,7 +6,7 @@ const s3BookingUrl = 'https://example.com/s3-terminvergabe';
 const leitbild = [
   {
     title: 'Drei Generationen, eine Praxis',
-    text: 'Manche unserer Patientinnen und Patienten kennen wir, seit sie selbst noch Kinder waren – und behandeln inzwischen schon ihre eigenen Kinder oder Enkel. Diese Nähe ist für uns kein Zufall, sondern das, was unsere Arbeit besonders macht: Wir sehen nicht nur Befunde und Werte, sondern Menschen mit einer Geschichte. Wer zu uns kommt, muss nicht immer alles von Anfang an erzählen – wir wissen oft schon, woher jemand kommt und was ihn beschäftigt.'
+    text: 'Manche unserer Patientinnen und Patienten kennen wir, seit sie selbst noch Kinder waren – und behandeln inzwischen schon ihre eigenen Kinder oder Enkel. Wir sehen nicht nur Befunde und Werte, sondern Menschen mit einer Geschichte. Wer zu uns kommt, muss nicht immer alles von Anfang an erzählen – wir wissen oft schon, woher jemand kommt und was ihn beschäftigt.'
   },
   {
     title: 'Vertrauen, das über Jahre wächst',
@@ -90,12 +90,12 @@ const notfall = [
         MVZ Gomaringen
       </a>
       <nav class="hidden items-center gap-7 text-sm font-semibold text-praxis-ink lg:flex" aria-label="Hauptnavigation">
-        <a href="#leitbild" class="link-underline hover:text-praxis-accent">Leitbild</a>
         <a href="#schwerpunkt" class="link-underline hover:text-praxis-accent">Schwerpunkt</a>
         <a href="#manuelle-medizin" class="link-underline hover:text-praxis-accent">Manuelle Medizin</a>
         <a href="#leistungen" class="link-underline hover:text-praxis-accent">Leistungen</a>
         <a href="#team" class="link-underline hover:text-praxis-accent">Team</a>
         <a href="#termin" class="link-underline hover:text-praxis-accent">Termin</a>
+        <a href="#leitbild" class="link-underline hover:text-praxis-accent">Leitbild</a>
         <a href="#kontakt" class="link-underline hover:text-praxis-accent">Kontakt</a>
       </nav>
       <a
@@ -129,7 +129,7 @@ const notfall = [
             der MED-GO e.G. · Hausarztpraxis Dr. Bernd Schilling
           </p>
           <h1 class="mt-8 text-2xl font-medium leading-snug text-white sm:text-3xl lg:text-[2.35rem] lg:leading-snug">
-            Hausärztliche Grundversorgung und Familienmedizin – mit Nähe und Verantwortung.
+            Hausärztliche Grundversorgung · Familienmedizin – mit Nähe und Verantwortung.
           </h1>
           <p class="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
             Wir begleiten Familien in Gomaringen oft über Jahrzehnte. Manuelle Medizin bieten wir zusätzlich an – etwas, das viele Praxen so nicht haben.
@@ -152,35 +152,12 @@ const notfall = [
       </div>
     </section>
 
-    <!-- Leitbild -->
-    <section id="leitbild" class="section-pad py-20 sm:py-24">
-      <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Unser Leitbild</p>
-      <h2 class="mt-3 max-w-2xl text-3xl font-semibold text-praxis-deep sm:text-4xl">
-        Was uns als Praxis ausmacht
-      </h2>
-      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[color:var(--text-soft)]">
-        Vier Grundsätze begleiten unsere Arbeit – vom ersten Gespräch bis zur langfristigen Betreuung.
-      </p>
-
-      <div class="mt-12 grid gap-10 md:grid-cols-2">
-        {
-          leitbild.map((item, index) => (
-            <article class="border-t border-[color:var(--line)] pt-6">
-              <span class="text-sm font-semibold text-praxis-accent">0{index + 1}</span>
-              <h3 class="mt-2 text-2xl font-semibold text-praxis-deep">{item.title}</h3>
-              <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">{item.text}</p>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-
     <!-- Schwerpunkt -->
     <section id="schwerpunkt" class="border-y border-[color:var(--line)] bg-white/50">
       <div class="section-pad py-20 sm:py-24">
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Unser Schwerpunkt</p>
         <h2 class="mt-3 max-w-3xl text-3xl font-semibold text-praxis-deep sm:text-4xl">
-          Hausärztliche Grundversorgung und Familienmedizin
+          Hausärztliche Grundversorgung · Familienmedizin
         </h2>
         <p class="mt-5 max-w-3xl text-lg leading-relaxed text-[color:var(--text-soft)]">
           Im Mittelpunkt steht die hausärztliche Betreuung für die ganze Familie – von der Vorsorge über akute
@@ -363,6 +340,30 @@ const notfall = [
             referrerpolicy="no-referrer"
           ></iframe>
         </div>
+      </div>
+    </section>
+
+    <!-- Leitbild -->
+    <section id="leitbild" class="section-pad py-20 sm:py-24">
+      <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Unser Leitbild</p>
+      <h2 class="mt-3 max-w-2xl text-3xl font-semibold text-praxis-deep sm:text-4xl">
+        Was uns als Praxis ausmacht
+      </h2>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[color:var(--text-soft)]">
+        Für alle, die mehr über unsere Haltung wissen möchten: Vier Grundsätze begleiten unsere Arbeit –
+        vom ersten Gespräch bis zur langfristigen Betreuung.
+      </p>
+
+      <div class="mt-12 grid gap-10 md:grid-cols-2">
+        {
+          leitbild.map((item, index) => (
+            <article class="border-t border-[color:var(--line)] pt-6">
+              <span class="text-sm font-semibold text-praxis-accent">0{index + 1}</span>
+              <h3 class="mt-2 text-2xl font-semibold text-praxis-deep">{item.title}</h3>
+              <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">{item.text}</p>
+            </article>
+          ))
+        }
       </div>
     </section>
 
