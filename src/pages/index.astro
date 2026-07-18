@@ -39,12 +39,33 @@ const leistungen = [
   'Präoperative Untersuchungen',
   'Jugendschutzuntersuchung',
   'Führerscheinuntersuchung',
-  'Glisson-Schlinge',
   'Reset-Therapie'
 ];
 
-const aerzte = ['Dr. med. B. Schilling', 'J. Osmaston', 'Dr. med. C. Riesner'];
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const aerzte = [
+  {
+    name: 'Dr. med. B. Schilling',
+    image: `${baseUrl}images/team/dr-schilling.jpg`,
+    imagePosition: 'object-top'
+  },
+  {
+    name: 'J. Osmaston',
+    image: `${baseUrl}images/team/j-osmaston.jpg`,
+    imagePosition: 'object-top'
+  },
+  {
+    name: 'Dr. med. C. Riesner',
+    image: `${baseUrl}images/team/dr-riesner.jpg`,
+    imagePosition: 'object-top'
+  }
+];
+
 const team = ['Frau Schilling', 'Frau Neth', 'Frau Rieger', 'Frau Rauschenbach', 'Frau Merz'];
+const teamImage = `${baseUrl}images/team/praxis-team.jpg`;
 
 const oeffnungszeiten = [
   { tag: 'Montag', zeit: '8:00 – 12:00 und 16:00 – 18:00 Uhr' },
@@ -196,9 +217,8 @@ const notfall = [
             gezielten, schonenden Techniken.
           </p>
           <p class="mt-4 max-w-xl leading-relaxed text-white/70">
-            Eine Besonderheit unserer Praxis ist die Reset-Therapie. Ergänzend nutzen wir unter anderem die
-            Glisson-Schlinge. Sprechen Sie uns an, wenn Beschwerden am Bewegungsapparat Sie belasten – wir
-            prüfen gemeinsam, was für Sie passt.
+            Eine Besonderheit unserer Praxis ist die Reset-Therapie. Sprechen Sie uns an, wenn Beschwerden am
+            Bewegungsapparat Sie belasten – wir prüfen gemeinsam, was für Sie passt.
           </p>
         </div>
 
@@ -259,29 +279,55 @@ const notfall = [
           begleitet.
         </p>
 
-        <div class="mt-12 grid gap-12 lg:grid-cols-2">
-          <div>
-            <h3 class="text-xl font-semibold text-praxis-deep">Ärztliche Leitung</h3>
-            <ul class="mt-5 space-y-3">
-              {
-                aerzte.map((name) => (
-                  <li class="border-l-2 border-praxis-accent pl-4 text-lg text-[color:var(--text-soft)]">{name}</li>
-                ))
-              }
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold text-praxis-deep">Praxisteam</h3>
-            <ul class="mt-5 flex flex-wrap gap-2">
-              {
-                team.map((name) => (
-                  <li class="border border-[color:var(--line)] bg-white px-3.5 py-2 text-[color:var(--text-soft)]">
-                    {name}
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
+        <h3 class="mt-12 text-xl font-semibold text-praxis-deep">Ärztliche Leitung</h3>
+        <ul class="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            aerzte.map((arzt) => (
+              <li>
+                <figure>
+                  <div class="aspect-[4/5] overflow-hidden bg-praxis-mist">
+                    <img
+                      src={arzt.image}
+                      alt={`Portrait von ${arzt.name}`}
+                      class={`h-full w-full object-cover ${arzt.imagePosition}`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <figcaption class="mt-4 border-l-2 border-praxis-accent pl-4 text-lg text-praxis-deep">
+                    {arzt.name}
+                  </figcaption>
+                </figure>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mt-16">
+          <h3 class="text-xl font-semibold text-praxis-deep">Praxisteam</h3>
+          <figure class="mt-6">
+            <div class="overflow-hidden bg-praxis-mist">
+              <img
+                src={teamImage}
+                alt="Das gesamte Praxisteam des MVZ Gomaringen vor der Praxis"
+                class="h-auto w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="mt-4 text-[color:var(--text-soft)]">
+              Unser Team in Gomaringen – gemeinsam für Ihre Gesundheit.
+            </figcaption>
+          </figure>
+          <ul class="mt-6 flex flex-wrap gap-2">
+            {
+              team.map((name) => (
+                <li class="border border-[color:var(--line)] bg-white px-3.5 py-2 text-[color:var(--text-soft)]">
+                  {name}
+                </li>
+              ))
+            }
+          </ul>
         </div>
       </div>
     </section>
