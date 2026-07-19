@@ -33,10 +33,7 @@ Hinweis zur URL:
 - Fuer Projektseiten nutzt Astro automatisch den Repo-Pfad als `base`.
 - Falls du spaeter eine eigene Domain verwendest, kannst du im Workflow `ASTRO_BASE=/` setzen.
 
-## Wichtige Anpassung
+## Terminvergabe
 
-Die Terminvergabe ist als `iframe` eingebunden.
-Trage die echte S3-Embed-URL in folgender Datei ein:
-
-- `src/pages/index.astro`
-- Variable: `s3BookingUrl`
+Termine werden derzeit nur telefonisch vergeben (`07072 / 7031`).
+Eine Online-Buchung ist für später vorgesehen.

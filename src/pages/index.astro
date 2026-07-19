@@ -1,8 +1,6 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 
-const s3BookingUrl = 'https://example.com/s3-terminvergabe';
-
 const leitbild = [
   {
     title: 'Drei Generationen, eine Praxis',
@@ -54,7 +52,7 @@ const aerzte = [
     imagePosition: 'object-top'
   },
   {
-    name: 'J. Osmaston',
+    name: 'J. Osmaston, MBChB',
     image: `${baseUrl}images/team/j-osmaston.jpg`,
     imagePosition: 'object-top'
   },
@@ -100,10 +98,10 @@ const notfall = [
         <a href="#kontakt" class="link-underline hover:text-praxis-accent">Kontakt</a>
       </nav>
       <a
-        href="#termin"
+        href="tel:+4970727031"
         class="rounded-md bg-praxis-deep px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-praxis-mid"
       >
-        Termin buchen
+        07072 / 7031
       </a>
     </div>
   </header>
@@ -137,16 +135,16 @@ const notfall = [
           </p>
           <div class="mt-9 flex flex-wrap gap-3">
             <a
-              href="#termin"
+              href="tel:+4970727031"
               class="rounded-md bg-white px-5 py-3 text-sm font-semibold text-praxis-deep shadow-lift transition hover:bg-praxis-soft"
             >
-              Online Termin anfragen
+              Termin telefonisch vereinbaren
             </a>
             <a
-              href="tel:+4970727031"
+              href="#termin"
               class="rounded-md border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
             >
-              07072 / 7031
+              Öffnungszeiten
             </a>
           </div>
         </div>
@@ -213,10 +211,10 @@ const notfall = [
             </li>
           </ul>
           <a
-            href="#termin"
+            href="tel:+4970727031"
             class="mt-8 inline-flex rounded-md bg-praxis-highlight px-4 py-2.5 text-sm font-semibold text-praxis-deep transition hover:brightness-110"
           >
-            Termin anfragen
+            Termin telefonisch vereinbaren
           </a>
         </aside>
       </div>
@@ -308,35 +306,24 @@ const notfall = [
 
     <!-- Termin -->
     <section id="termin" class="section-pad py-20 sm:py-24">
-      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div>
-          <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Terminvergabe</p>
-          <h2 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Termin vereinbaren</h2>
-          <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
-            Wir sind eine Bestellpraxis – bitte vereinbaren Sie Ihren Termin immer vorab. Online können Sie
-            ausgewählte Sprechstundentermine direkt buchen; telefonisch sind wir unter
-            <a href="tel:+4970727031" class="font-semibold text-praxis-deep link-underline">07072 / 7031</a>
-            erreichbar.
-          </p>
-          <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
-            Wiederholungsrezepte und Überweisungen können Sie per Telefon oder E-Mail anfordern und in der Regel
-            am Folgetag abholen.
-          </p>
-          <p class="mt-6 border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-            Hinweis für die Einrichtung: Bitte die echte S3-Embed-URL in <code class="font-mono">s3BookingUrl</code>
-            eintragen.
-          </p>
-        </div>
-
-        <div class="overflow-hidden border border-[color:var(--line)] bg-white shadow-soft">
-          <iframe
-            src={s3BookingUrl}
-            title="Online-Terminvergabe"
-            class="h-[560px] w-full border-0"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-          ></iframe>
-        </div>
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Terminvergabe</p>
+        <h2 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Termin vereinbaren</h2>
+        <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
+          Wir sind eine Bestellpraxis – bitte vereinbaren Sie Ihren Termin immer vorab. Termine vergeben wir
+          derzeit telefonisch unter
+          <a href="tel:+4970727031" class="font-semibold text-praxis-deep link-underline">07072 / 7031</a>.
+        </p>
+        <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
+          Wiederholungsrezepte und Überweisungen können Sie per Telefon oder E-Mail anfordern und in der Regel
+          am Folgetag abholen.
+        </p>
+        <a
+          href="tel:+4970727031"
+          class="mt-8 inline-flex rounded-md bg-praxis-deep px-5 py-3 text-sm font-semibold text-white transition hover:bg-praxis-mid"
+        >
+          Jetzt anrufen: 07072 / 7031
+        </a>
       </div>
     </section>
 

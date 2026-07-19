@@ -21,7 +21,7 @@
   - `src/styles/global.css`
 - Styling nur mit Tailwind und vorhandenen CSS-Variablen erweitern.
 - Keine unnoetigen neuen Abhaengigkeiten einfuehren.
-- Terminvergabe ueber bestehendes S3-`iframe` integrieren; URL ueber `s3BookingUrl` pflegen.
+- Terminvergabe derzeit nur telefonisch (07072 / 7031); Online-Buchung spaeter wieder einbinden.
 
 ## Deployment
 - Deployment erfolgt ueber GitHub Actions nach GitHub Pages.
