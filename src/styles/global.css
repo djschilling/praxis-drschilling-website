@@ -74,26 +74,36 @@ h4,
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+.hero-photo {
+  animation: drift 28s ease-in-out infinite;
+  transform-origin: 60% 40%;
+  will-change: transform;
 }
 
-.hero-atmosphere {
+.hero-scrim {
   background:
-    linear-gradient(120deg, rgba(15, 46, 42, 0.88) 0%, rgba(22, 64, 57, 0.72) 42%, rgba(47, 111, 122, 0.55) 100%),
-    radial-gradient(circle at 70% 30%, rgba(196, 163, 90, 0.28), transparent 42%),
-    linear-gradient(160deg, #1a4d44 0%, #0f2e2a 55%, #163a48 100%);
-  background-size: 100% 100%, 140% 140%, 200% 200%;
-  animation: shimmer 18s ease-in-out infinite alternate;
+    linear-gradient(
+      100deg,
+      rgba(12, 36, 33, 0.78) 0%,
+      rgba(12, 36, 33, 0.55) 42%,
+      rgba(12, 36, 33, 0.28) 68%,
+      rgba(12, 36, 33, 0.18) 100%
+    ),
+    linear-gradient(to top, rgba(12, 36, 33, 0.62) 0%, transparent 48%);
 }
 
-.hero-glow {
-  animation: drift 14s ease-in-out infinite;
+@media (min-width: 1024px) {
+  .hero-scrim {
+    background:
+      linear-gradient(
+        105deg,
+        rgba(12, 36, 33, 0.42) 0%,
+        rgba(12, 36, 33, 0.28) 38%,
+        rgba(12, 36, 33, 0.58) 62%,
+        rgba(12, 36, 33, 0.72) 100%
+      ),
+      linear-gradient(to top, rgba(12, 36, 33, 0.55) 0%, transparent 42%);
+  }
 }
 
 .site-header {
@@ -118,8 +128,7 @@ h4,
   }
 
   .hero-copy,
-  .hero-atmosphere,
-  .hero-glow {
+  .hero-photo {
     animation: none !important;
   }
 }

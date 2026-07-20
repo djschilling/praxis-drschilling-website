@@ -107,30 +107,33 @@ const notfall = [
   </header>
 
   <main id="start">
-    <!-- Hero: eine Komposition, Brand zuerst, vollflächig -->
-    <section class="hero-atmosphere relative min-h-[88vh] overflow-hidden text-white">
-      <div
-        class="hero-glow pointer-events-none absolute -right-16 top-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(215,232,235,0.22),transparent_65%)]"
-        aria-hidden="true"
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 opacity-30"
-        style="background-image: radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px); background-size: 28px 28px;"
-        aria-hidden="true"
-      ></div>
+    <!-- Hero: Ortsfoto vollflächig, Brand zuerst, Text im ruhigen Himmel -->
+    <section class="relative min-h-[88vh] overflow-hidden bg-praxis-deep text-white">
+      <img
+        class="hero-photo absolute inset-0 h-full w-full scale-105 object-cover object-[center_42%]"
+        src={`${baseUrl}images/hero/gomaringen-morgen.jpg`}
+        alt="Morgenstimmung über Gomaringen"
+        width="1024"
+        height="558"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="hero-scrim pointer-events-none absolute inset-0" aria-hidden="true"></div>
 
-      <div class="section-pad relative flex min-h-[88vh] flex-col justify-center py-28 sm:py-32">
-        <div class="hero-copy max-w-3xl">
-          <p class="brand-font text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-7xl">
+      <div
+        class="section-pad relative flex min-h-[88vh] flex-col justify-center py-28 sm:py-32 lg:items-end"
+      >
+        <div class="hero-copy max-w-3xl lg:max-w-xl">
+          <p class="brand-font text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
             MVZ Gomaringen
           </p>
-          <p class="mt-4 text-base font-medium text-white/85 sm:text-lg">
+          <p class="mt-4 text-base font-medium text-white/90 sm:text-lg">
             der MED-GO e.G. · Hausarztpraxis Dr. Bernd Schilling
           </p>
-          <h1 class="mt-8 text-2xl font-medium leading-snug text-white sm:text-3xl lg:text-[2.35rem] lg:leading-snug">
+          <h1 class="mt-8 text-2xl font-medium leading-snug text-white sm:text-3xl lg:text-[2.15rem] lg:leading-snug">
             Hausärztliche Grundversorgung · Familienmedizin – mit Nähe und Verantwortung.
           </h1>
-          <p class="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
+          <p class="mt-5 text-base leading-relaxed text-white/85 sm:text-lg">
             Wir begleiten Familien in Gomaringen oft über Jahrzehnte. Manuelle Medizin bieten wir zusätzlich an.
           </p>
           <div class="mt-9 flex flex-wrap gap-3">
@@ -142,7 +145,7 @@ const notfall = [
             </a>
             <a
               href="#termin"
-              class="rounded-md border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+              class="rounded-md border border-white/45 px-5 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
             >
               Öffnungszeiten
             </a>
