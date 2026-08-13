@@ -63,7 +63,17 @@ const aerzte = [
   }
 ];
 
-const team = ['Frau Schilling', 'Frau L. Neth', 'Frau A. Neth', 'Frau Rieger', 'Frau Rauschenbach', 'Frau Merz'];
+const team = [
+  'Dr. Schilling',
+  'Frau Schilling',
+  'Frau L. Neth',
+  'Frau A. Neth',
+  'Frau Merz',
+  'Frau Rieger',
+  'Dr. Osmaston',
+  'Dr. Riesner',
+  'Frau Rauschenbach'
+];
 const teamImage = `${baseUrl}images/team/praxis-team.jpg`;
 
 const oeffnungszeiten = [
@@ -113,8 +123,8 @@ const notfall = [
         class="hero-photo absolute inset-0 h-full w-full scale-105 object-cover object-[center_38%]"
         src={`${baseUrl}images/hero/gomaringen-tal.jpg`}
         alt="Blick über Gomaringen am Morgen"
-        width="1024"
-        height="535"
+        width="3976"
+        height="2081"
         fetchpriority="high"
         decoding="async"
       />
@@ -282,25 +292,18 @@ const notfall = [
             <div class="overflow-hidden bg-praxis-mist">
               <img
                 src={teamImage}
-                alt="Das gesamte Praxisteam des MVZ Gomaringen vor der Praxis"
+                alt={`Das gesamte Praxisteam des MVZ Gomaringen vor der Praxis. Von links nach rechts: ${team.join(', ')}.`}
                 class="h-auto w-full object-cover"
+                width="3200"
+                height="2133"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <figcaption class="mt-4 text-[color:var(--text-soft)]">
-              Unser Team in Gomaringen – gemeinsam für Ihre Gesundheit.
+              Von links nach rechts: {team.join(', ')}.
             </figcaption>
           </figure>
-          <ul class="mt-6 flex flex-wrap gap-2">
-            {
-              team.map((name) => (
-                <li class="border border-[color:var(--line)] bg-white px-3.5 py-2 text-[color:var(--text-soft)]">
-                  {name}
-                </li>
-              ))
-            }
-          </ul>
         </div>
       </div>
     </section>
