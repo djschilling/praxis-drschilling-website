@@ -8,15 +8,32 @@ export const praxis = {
   phoneDisplay: '07072 / 7031',
   phoneTel: '+4970727031',
   faxDisplay: '07072 / 912690',
-  /** Bitte durch die echte Praxis-E-Mail ersetzen (Pflichtangabe Impressum). */
-  email: 'info@praxis-dr-schilling.de',
   website: 'https://praxis-dr-schilling.de',
   /** Träger / Anbieter im Sinne des DDG */
   provider: 'MED-GO e.G.',
-  /** Bitte um Registergericht und Registernummer ergänzen, sobald bekannt. */
-  register: 'Genossenschaftsregister (Angaben bitte ergänzen)',
-  responsibleContent: 'Dr. med. Bernd Schilling',
-  medicalChamber: 'Landesärztekammer Baden-Württemberg',
+  legalForm: 'eingetragene Genossenschaft (e.G.)',
+  seat: 'Gomaringen',
+  registerCourt: 'Amtsgericht Stuttgart',
+  registerNumber: 'GnR 720231',
+  vatExemptNote:
+    'Die ärztlichen Leistungen sind gemäß § 4 Nr. 14 UStG von der Umsatzsteuer befreit. Eine Umsatzsteuer-Identifikationsnummer wird daher nicht geführt.',
+  responsibleContent: 'Dr. med. univ. Bernd Schilling',
+  medicalChamber: {
+    name: 'Landesärztekammer Baden-Württemberg',
+    street: 'Jahnstraße 40',
+    zipCity: '70597 Stuttgart',
+    websiteHref: 'https://www.aerztekammer-bw.de',
+    websiteLabel: 'www.aerztekammer-bw.de'
+  },
+  districtChamber: {
+    name: 'Bezirksärztekammer Südwürttemberg',
+    street: 'Haldenhaustraße 11',
+    zipCity: '72770 Reutlingen-Betzingen',
+    phoneDisplay: '07121 / 9170',
+    phoneTel: '+4971219170',
+    websiteHref: 'https://www.aerztekammer-bw.de/baek-sw',
+    websiteLabel: 'www.aerztekammer-bw.de'
+  },
   kv: 'Kassenärztliche Vereinigung Baden-Württemberg',
   professionalTitle: 'Arzt / Ärztin',
   professionalRules: [

@@ -47,17 +47,20 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
 
 const aerzte = [
   {
-    name: 'Dr. med. B. Schilling',
+    name: 'Dr. med. univ. Bernd Schilling',
+    qualifications: ['Facharzt für Allgemeinmedizin', 'Chirotherapie'],
     image: `${baseUrl}images/team/dr-schilling.jpg`,
     imagePosition: 'object-top'
   },
   {
-    name: 'J. Osmaston, MBChB',
+    name: 'Julie Osmaston',
+    qualifications: ['Fachärztin für Allgemeinmedizin'],
     image: `${baseUrl}images/team/j-osmaston.jpg`,
     imagePosition: 'object-top'
   },
   {
-    name: 'Dr. med. C. Riesner',
+    name: 'Dr. med. Cornelia Riesner',
+    qualifications: ['Fachärztin für Allgemeinmedizin'],
     image: `${baseUrl}images/team/dr-riesner.jpg`,
     imagePosition: 'object-top'
   }
@@ -70,7 +73,7 @@ const team = [
   'Frau A. Neth',
   'Frau Merz',
   'Frau Rieger',
-  'Dr. Osmaston',
+  'Frau Osmaston',
   'Dr. Riesner',
   'Frau Rauschenbach'
 ];
@@ -174,10 +177,6 @@ const notfall = [
           Beschwerden bis zur langfristigen Begleitung chronischer Erkrankungen. Wir sind Ihre erste Anlaufstelle
           im Alltag und kennen oft die Geschichte hinter dem aktuellen Anliegen.
         </p>
-        <p class="mt-4 max-w-3xl leading-relaxed text-[color:var(--text-soft)]">
-          Dazu kommt bei uns etwas, das viele Praxen so nicht anbieten: Manuelle Medizin als sinnvolle Ergänzung
-          zur klassischen hausärztlichen Versorgung.
-        </p>
       </div>
     </section>
 
@@ -199,12 +198,11 @@ const notfall = [
           </p>
           <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Manuelle Medizin</h2>
           <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/80">
-            Zusätzlich zur hausärztlichen Grundversorgung bieten wir Manuelle Medizin an – ein Angebot, das
-            viele Praxen so nicht haben. Blockaden, Verspannungen und Funktionsstörungen behandeln wir mit
+            Zusätzlich zur hausärztlichen Grundversorgung bieten wir Manuelle Medizin an. Blockaden, Verspannungen und Funktionsstörungen behandeln wir mit
             gezielten, schonenden Techniken.
           </p>
           <p class="mt-4 max-w-xl leading-relaxed text-white/70">
-            Eine Besonderheit unserer Praxis ist die Reset-Therapie. Sprechen Sie uns an, wenn Beschwerden am
+            Sprechen Sie uns an, wenn Beschwerden am
             Bewegungsapparat Sie belasten – wir prüfen gemeinsam, was für Sie passt.
           </p>
         </div>
@@ -277,8 +275,15 @@ const notfall = [
                       decoding="async"
                     />
                   </div>
-                  <figcaption class="mt-4 border-l-2 border-praxis-accent pl-4 text-lg text-praxis-deep">
-                    {arzt.name}
+                  <figcaption class="mt-4 border-l-2 border-praxis-accent pl-4 text-praxis-deep">
+                    <p class="text-lg">{arzt.name}</p>
+                    {arzt.qualifications && (
+                      <ul class="mt-1 space-y-0.5 text-sm leading-relaxed text-[color:var(--text-soft)]">
+                        {arzt.qualifications.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    )}
                   </figcaption>
                 </figure>
               </li>

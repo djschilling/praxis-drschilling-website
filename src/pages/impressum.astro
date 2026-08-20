@@ -26,7 +26,7 @@ import MainLayout from '../layouts/MainLayout.astro';
             Deutschland
           </address>
           <p class="mt-3 leading-relaxed">
-            Träger des Medizinischen Versorgungszentrums ist die {praxis.provider}.
+            Träger des Medizinischen Versorgungszentrums ist die {praxis.provider}, eine {praxis.legalForm} mit Sitz in {praxis.seat}.
           </p>
         </section>
 
@@ -40,12 +40,6 @@ import MainLayout from '../layouts/MainLayout.astro';
               </a>
             </li>
             <li>Fax: {praxis.faxDisplay}</li>
-            <li>
-              E-Mail:
-              <a href={`mailto:${praxis.email}`} class="font-semibold text-praxis-deep link-underline">
-                {praxis.email}
-              </a>
-            </li>
           </ul>
         </section>
 
@@ -54,9 +48,17 @@ import MainLayout from '../layouts/MainLayout.astro';
           <p class="mt-3 leading-relaxed">
             Die {praxis.provider} wird durch ihren Vorstand vertreten.
           </p>
-          <p class="mt-3 leading-relaxed">
-            Register: {praxis.register}
-          </p>
+          <ul class="mt-3 space-y-1 leading-relaxed">
+            <li>Rechtsform: {praxis.legalForm}</li>
+            <li>Sitz: {praxis.seat}</li>
+            <li>Registergericht: {praxis.registerCourt}</li>
+            <li>Genossenschaftsregister: {praxis.registerNumber}</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">Umsatzsteuer</h2>
+          <p class="mt-3 leading-relaxed">{praxis.vatExemptNote}</p>
         </section>
 
         <section>
@@ -80,15 +82,38 @@ import MainLayout from '../layouts/MainLayout.astro';
             <div>
               <dt class="font-semibold text-praxis-deep">Zuständige Ärztekammer</dt>
               <dd class="mt-1">
-                {praxis.medicalChamber}<br />
-                Jahnstraße 40, 70597 Stuttgart<br />
+                {praxis.medicalChamber.name}<br />
+                {praxis.medicalChamber.street}, {praxis.medicalChamber.zipCity}<br />
                 <a
-                  href="https://www.aerztekammer-bw.de"
+                  href={praxis.medicalChamber.websiteHref}
                   class="font-semibold text-praxis-deep link-underline"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  www.aerztekammer-bw.de
+                  {praxis.medicalChamber.websiteLabel}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-praxis-deep">Regionale Bezirksärztekammer</dt>
+              <dd class="mt-1">
+                {praxis.districtChamber.name}<br />
+                {praxis.districtChamber.street}, {praxis.districtChamber.zipCity}<br />
+                Telefon:
+                <a
+                  href={`tel:${praxis.districtChamber.phoneTel}`}
+                  class="font-semibold text-praxis-deep link-underline"
+                >
+                  {praxis.districtChamber.phoneDisplay}
+                </a>
+                <br />
+                <a
+                  href={praxis.districtChamber.websiteHref}
+                  class="font-semibold text-praxis-deep link-underline"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {praxis.districtChamber.websiteLabel}
                 </a>
               </dd>
             </div>
