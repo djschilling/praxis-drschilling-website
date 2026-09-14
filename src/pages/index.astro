@@ -49,19 +49,19 @@ const aerzte = [
   {
     name: 'Dr. med. univ. Bernd Schilling',
     qualifications: ['Facharzt für Allgemeinmedizin', 'Chirotherapie'],
-    image: `${baseUrl}images/team/dr-schilling.jpg`,
+    image: `${baseUrl}images/team/dr-schilling.webp`,
     imagePosition: 'object-top'
   },
   {
     name: 'Julie Osmaston',
     qualifications: ['Fachärztin für Allgemeinmedizin'],
-    image: `${baseUrl}images/team/j-osmaston.jpg`,
+    image: `${baseUrl}images/team/j-osmaston.webp`,
     imagePosition: 'object-top'
   },
   {
     name: 'Dr. med. Cornelia Riesner',
     qualifications: ['Fachärztin für Allgemeinmedizin'],
-    image: `${baseUrl}images/team/dr-riesner.jpg`,
+    image: `${baseUrl}images/team/dr-riesner.webp`,
     imagePosition: 'object-top'
   }
 ];
@@ -78,6 +78,7 @@ const team = [
   'Frau Rauschenbach'
 ];
 const teamImage = `${baseUrl}images/team/praxis-team.jpg`;
+const teamImageWebpSrcset = `${baseUrl}images/team/praxis-team-1200.webp 1200w, ${baseUrl}images/team/praxis-team-2000.webp 2000w`;
 
 const oeffnungszeiten = [
   { tag: 'Montag', zeit: '8:00 – 12:00 und 16:00 – 18:00 Uhr' },
@@ -122,15 +123,22 @@ const notfall = [
   <main id="start">
     <!-- Hero: Ortsfoto vollflächig, Brand zuerst -->
     <section class="relative min-h-[88vh] overflow-hidden bg-praxis-deep text-white">
-      <img
-        class="hero-photo absolute inset-0 h-full w-full scale-105 object-cover object-[center_38%]"
-        src={`${baseUrl}images/hero/gomaringen-tal.jpg`}
-        alt="Blick über Gomaringen am Morgen"
-        width="3976"
-        height="2081"
-        fetchpriority="high"
-        decoding="async"
-      />
+      <picture>
+        <source
+          type="image/webp"
+          srcset={`${baseUrl}images/hero/gomaringen-tal-1600.webp 1600w, ${baseUrl}images/hero/gomaringen-tal-2400.webp 2400w`}
+          sizes="(max-width: 640px) 1400px, 100vw"
+        />
+        <img
+          class="hero-photo absolute inset-0 h-full w-full scale-105 object-cover object-[center_38%]"
+          src={`${baseUrl}images/hero/gomaringen-tal.jpg`}
+          alt="Blick über Gomaringen am Morgen"
+          width="3976"
+          height="2081"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
       <div class="hero-scrim pointer-events-none absolute inset-0" aria-hidden="true"></div>
 
       <div class="section-pad relative flex min-h-[88vh] flex-col justify-center py-28 sm:py-32">
@@ -295,15 +303,18 @@ const notfall = [
           <h3 class="text-xl font-semibold text-praxis-deep">Praxisteam</h3>
           <figure class="mt-6">
             <div class="overflow-hidden bg-praxis-mist">
-              <img
-                src={teamImage}
-                alt={`Das gesamte Praxisteam des MVZ Gomaringen vor der Praxis. Von links nach rechts: ${team.join(', ')}.`}
-                class="h-auto w-full object-cover"
-                width="3200"
-                height="2133"
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source type="image/webp" srcset={teamImageWebpSrcset} sizes="(max-width: 1152px) 100vw, 1152px" />
+                <img
+                  src={teamImage}
+                  alt={`Das gesamte Praxisteam des MVZ Gomaringen vor der Praxis. Von links nach rechts: ${team.join(', ')}.`}
+                  class="h-auto w-full object-cover"
+                  width="3200"
+                  height="2133"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <figcaption class="mt-4 text-[color:var(--text-soft)]">
               Von links nach rechts: {team.join(', ')}.
