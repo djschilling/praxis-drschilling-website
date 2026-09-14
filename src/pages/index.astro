@@ -1,4 +1,5 @@
 ---
+import { praxis } from '../data/praxis';
 import MainLayout from '../layouts/MainLayout.astro';
 
 const leitbild = [
@@ -94,9 +95,42 @@ const notfall = [
   { label: 'Apothekenbereitschaft', nummer: '0800 0022833' },
   { label: 'Giftnotruf Baden-Württemberg', nummer: '0761 19240' }
 ];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalClinic',
+  '@id': `${praxis.website}/#medical-clinic`,
+  name: praxis.shortName,
+  legalName: praxis.legalName,
+  alternateName: 'Hausarztpraxis Dr. Bernd Schilling',
+  url: praxis.website,
+  telephone: praxis.phoneTel,
+  image: `${praxis.website}/images/team/praxis-team.jpg`,
+  logo: `${praxis.website}/logo.svg`,
+  description:
+    'Hausärztliche Grundversorgung und Familienmedizin in Gomaringen mit Manueller Medizin als zusätzlichem Angebot.',
+  medicalSpecialty: 'https://schema.org/PrimaryCare',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: praxis.street,
+    postalCode: praxis.zip,
+    addressLocality: praxis.city,
+    addressCountry: 'DE'
+  },
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Monday', opens: '08:00', closes: '12:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Monday', opens: '16:00', closes: '18:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Tuesday', opens: '08:00', closes: '12:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Wednesday', opens: '08:00', closes: '12:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Wednesday', opens: '16:00', closes: '18:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Thursday', opens: '08:00', closes: '12:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Friday', opens: '08:00', closes: '12:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Friday', opens: '15:00', closes: '16:00' }
+  ]
+};
 ---
 
-<MainLayout>
+<MainLayout structuredData={structuredData}>
   <header class="site-header sticky top-0 z-50 border-b border-[color:var(--line)] text-praxis-deep shadow-sm">
     <div class="section-pad flex items-center justify-between gap-4 py-3.5">
       <a href="#start" class="brand-font text-lg font-semibold tracking-tight text-praxis-deep sm:text-xl">

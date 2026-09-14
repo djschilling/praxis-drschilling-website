@@ -7,13 +7,15 @@ interface Props {
   description?: string;
   ogImage?: string;
   ogType?: 'website' | 'article';
+  structuredData?: Record<string, unknown>;
 }
 
 const {
   title = 'MVZ Gomaringen – Hausarztpraxis Dr. Bernd Schilling',
   description =
     'MVZ Gomaringen der MED-GO e.G.: Hausärztliche Grundversorgung · Familienmedizin in der Lindenstraße 84/1 – mit Manueller Medizin als besonderem Angebot.',
-  ogType = 'website'
+  ogType = 'website',
+  structuredData
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
@@ -53,6 +55,16 @@ const ogImageURL = Astro.props.ogImage
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL.href} />
+
+    {
+      structuredData && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(structuredData)}
+        />
+      )
+    }
 
     <script
       is:inline
