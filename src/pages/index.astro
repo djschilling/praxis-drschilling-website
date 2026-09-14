@@ -295,13 +295,38 @@ const structuredData = {
     <!-- Team -->
     <section id="team" class="border-y border-[color:var(--line)] bg-white/50">
       <div class="section-pad py-20 sm:py-24">
-        <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Menschen vor Ort</p>
-        <h2 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Ärztinnen, Ärzte und Team</h2>
-        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[color:var(--text-soft)]">
-          Als eingespieltes Praxisteam begleiten wir Patientinnen und Patienten oft über viele Jahre.
-        </p>
+        <div class="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:gap-14">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-accent">Menschen vor Ort</p>
+            <h2 class="mt-3 text-3xl font-semibold text-praxis-deep sm:text-4xl">Ärztinnen, Ärzte und Team</h2>
+            <p class="mt-4 text-lg leading-relaxed text-[color:var(--text-soft)]">
+              Als eingespieltes Praxisteam begleiten wir Patientinnen und Patienten oft über viele Jahre.
+            </p>
+          </div>
 
-        <h3 class="mt-12 text-xl font-semibold text-praxis-deep">Ärztliche Leitung</h3>
+          <figure>
+            <div class="overflow-hidden bg-praxis-mist">
+              <picture>
+                <source type="image/webp" srcset={teamImageWebpSrcset} sizes="(max-width: 1024px) 100vw, 720px" />
+                <img
+                  src={teamImage}
+                  alt={`Das gesamte Praxisteam des MVZ Gomaringen vor der Praxis. Von links nach rechts: ${team.join(', ')}.`}
+                  class="h-auto w-full object-cover"
+                  width="3200"
+                  height="2133"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+            <figcaption class="mt-4 text-[color:var(--text-soft)]">
+              <span class="font-semibold text-praxis-deep">Praxisteam</span><br />
+              Von links nach rechts: {team.join(', ')}.
+            </figcaption>
+          </figure>
+        </div>
+
+        <h3 class="mt-16 text-xl font-semibold text-praxis-deep">Ärztliche Leitung</h3>
         <ul class="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {
             aerzte.map((arzt) => (
@@ -331,29 +356,6 @@ const structuredData = {
             ))
           }
         </ul>
-
-        <div class="mt-16">
-          <h3 class="text-xl font-semibold text-praxis-deep">Praxisteam</h3>
-          <figure class="mt-6">
-            <div class="overflow-hidden bg-praxis-mist">
-              <picture>
-                <source type="image/webp" srcset={teamImageWebpSrcset} sizes="(max-width: 1152px) 100vw, 1152px" />
-                <img
-                  src={teamImage}
-                  alt={`Das gesamte Praxisteam des MVZ Gomaringen vor der Praxis. Von links nach rechts: ${team.join(', ')}.`}
-                  class="h-auto w-full object-cover"
-                  width="3200"
-                  height="2133"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
-            </div>
-            <figcaption class="mt-4 text-[color:var(--text-soft)]">
-              Von links nach rechts: {team.join(', ')}.
-            </figcaption>
-          </figure>
-        </div>
       </div>
     </section>
 
