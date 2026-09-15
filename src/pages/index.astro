@@ -132,8 +132,8 @@ const structuredData = {
 
 <MainLayout structuredData={structuredData}>
   <header class="site-header sticky top-0 z-50 border-b border-[color:var(--line)] text-praxis-deep shadow-sm">
-    <div class="section-pad flex items-center justify-between gap-4 py-3.5">
-      <a href="#start" class="brand-font text-lg font-semibold tracking-tight text-praxis-deep sm:text-xl">
+    <div class="section-pad flex items-center justify-between gap-2 py-3.5 sm:gap-4">
+      <a href="#start" class="brand-font whitespace-nowrap text-lg font-semibold tracking-tight text-praxis-deep sm:text-xl">
         MVZ Gomaringen
       </a>
       <nav class="hidden items-center gap-7 text-sm font-semibold text-praxis-ink lg:flex" aria-label="Hauptnavigation">
@@ -145,14 +145,68 @@ const structuredData = {
         <a href="#leitbild" class="link-underline hover:text-praxis-accent">Leitbild</a>
         <a href="#kontakt" class="link-underline hover:text-praxis-accent">Kontakt</a>
       </nav>
-      <a
-        href="tel:+4970727031"
-        class="rounded-md bg-praxis-deep px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-praxis-mid"
-      >
-        07072 / 7031
-      </a>
+      <div class="flex shrink-0 items-center gap-2">
+        <a
+          href="tel:+4970727031"
+          aria-label="Praxis anrufen: 07072 / 7031"
+          class="flex h-10 items-center justify-center rounded-md bg-praxis-deep px-3 text-sm font-semibold text-white transition hover:bg-praxis-mid sm:h-auto sm:px-3.5 sm:py-2"
+        >
+          <svg class="h-5 w-5 sm:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106a1.125 1.125 0 0 0-1.173.417l-.97 1.293a1.125 1.125 0 0 1-1.21.38 12.035 12.035 0 0 1-7.143-7.143 1.125 1.125 0 0 1 .38-1.21l1.293-.97c.363-.272.526-.739.417-1.173L6.963 3.102A1.125 1.125 0 0 0 5.872 2.25H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+          </svg>
+          <span class="hidden sm:inline">07072 / 7031</span>
+        </a>
+
+        <details id="mobile-navigation" class="group relative lg:hidden">
+          <summary
+            class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-md border border-[color:var(--line)] bg-white text-praxis-deep transition hover:border-praxis-accent hover:text-praxis-accent [&::-webkit-details-marker]:hidden"
+            aria-label="Navigation öffnen"
+            aria-expanded="false"
+          >
+            <svg class="h-5 w-5 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="hidden h-5 w-5 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          </summary>
+          <nav
+            class="absolute right-0 top-full mt-3 w-64 overflow-hidden rounded-md border border-[color:var(--line)] bg-white p-2 text-sm font-semibold text-praxis-ink shadow-lift"
+            aria-label="Mobile Navigation"
+          >
+            <a href="#schwerpunkt" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Schwerpunkt</a>
+            <a href="#manuelle-medizin" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Manuelle Medizin</a>
+            <a href="#leistungen" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Leistungen</a>
+            <a href="#team" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Team</a>
+            <a href="#termin" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Termin</a>
+            <a href="#leitbild" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Leitbild</a>
+            <a href="#kontakt" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Kontakt</a>
+          </nav>
+        </details>
+      </div>
     </div>
   </header>
+
+  <script>
+    const mobileNavigation = document.getElementById('mobile-navigation');
+    const mobileNavigationToggle = mobileNavigation?.querySelector('summary');
+
+    mobileNavigation?.addEventListener('toggle', () => {
+      const isOpen = mobileNavigation.hasAttribute('open');
+      mobileNavigationToggle?.setAttribute('aria-expanded', String(isOpen));
+      mobileNavigationToggle?.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
+    });
+
+    mobileNavigation?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => mobileNavigation.removeAttribute('open'));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (mobileNavigation?.hasAttribute('open') && !mobileNavigation.contains(event.target as Node)) {
+        mobileNavigation.removeAttribute('open');
+      }
+    });
+  </script>
 
   <main id="start">
     <!-- Hero: Ortsfoto vollflächig, Brand zuerst -->
