@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+started_at="$SECONDS"
+echo "[orb setup] Node $(node --version), npm $(npm --version)"
+echo "[orb setup] Installing dependencies from package-lock.json..."
+npm ci --prefer-offline --no-audit --no-fund
+echo "[orb setup] Complete in $((SECONDS - started_at))s."

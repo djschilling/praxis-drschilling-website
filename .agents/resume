@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+node --version >/dev/null
+npm --version >/dev/null
+test -d node_modules
+echo "[orb resume] Toolchain and dependencies are ready."
