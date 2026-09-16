@@ -1,6 +1,11 @@
 ---
+import { hinweise } from '../data/hinweise';
 import { praxis } from '../data/praxis';
 import MainLayout from '../layouts/MainLayout.astro';
+
+const buildZeitpunkt = Date.now();
+const istAktuell = (sichtbarAb: string, sichtbarBis: string) =>
+  buildZeitpunkt >= Date.parse(sichtbarAb) && buildZeitpunkt < Date.parse(sichtbarBis);
 
 const leitbild = [
   {
@@ -126,6 +131,22 @@ const structuredData = {
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Thursday', opens: '08:00', closes: '12:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Friday', opens: '08:00', closes: '12:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Friday', opens: '15:00', closes: '16:00' }
+  ],
+  specialOpeningHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      validFrom: '2026-09-24',
+      validThrough: '2026-09-24',
+      opens: '00:00',
+      closes: '00:00'
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      validFrom: '2026-09-25',
+      validThrough: '2026-09-25',
+      opens: '00:00',
+      closes: '00:00'
+    }
   ]
 };
 ---
@@ -209,6 +230,64 @@ const structuredData = {
   </script>
 
   <main id="start">
+    <section
+      class="border-b border-praxis-highlight/40 bg-praxis-highlight/15"
+      aria-label="Aktuelle Hinweise"
+      data-hinweise
+      hidden={!hinweise.some((hinweis) => istAktuell(hinweis.sichtbarAb, hinweis.sichtbarBis))}
+    >
+      <div class="section-pad py-4 sm:py-5">
+        {
+          hinweise.map((hinweis) => (
+            <article
+              class="flex gap-3 border-l-4 border-praxis-highlight pl-4 sm:items-center sm:gap-4 sm:pl-5"
+              data-hinweis
+              data-sichtbar-ab={hinweis.sichtbarAb}
+              data-sichtbar-bis={hinweis.sichtbarBis}
+              hidden={!istAktuell(hinweis.sichtbarAb, hinweis.sichtbarBis)}
+            >
+              <svg
+                class="mt-0.5 h-5 w-5 shrink-0 text-praxis-deep sm:mt-0 sm:h-6 sm:w-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path stroke-linecap="round" d="M12 10v6m0-9h.01" />
+              </svg>
+              <div class="sm:flex sm:items-baseline sm:gap-3">
+                <h2 class="text-base font-semibold text-praxis-deep sm:shrink-0">{hinweis.titel}</h2>
+                <p class="mt-1 text-sm leading-relaxed text-[color:var(--text-soft)] sm:mt-0 sm:text-base">
+                  {hinweis.text}
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <script is:inline>
+      (() => {
+        const bereich = document.querySelector('[data-hinweise]');
+        const jetzt = Date.now();
+        let hatAktuelleHinweise = false;
+
+        bereich?.querySelectorAll('[data-hinweis]').forEach((hinweis) => {
+          const sichtbarAb = Date.parse(hinweis.getAttribute('data-sichtbar-ab') ?? '');
+          const sichtbarBis = Date.parse(hinweis.getAttribute('data-sichtbar-bis') ?? '');
+          const istSichtbar = jetzt >= sichtbarAb && jetzt < sichtbarBis;
+
+          hinweis.toggleAttribute('hidden', !istSichtbar);
+          hatAktuelleHinweise ||= istSichtbar;
+        });
+
+        bereich?.toggleAttribute('hidden', !hatAktuelleHinweise);
+      })();
+    </script>
+
     <!-- Hero: Ortsfoto vollflächig, Brand zuerst -->
     <section class="relative min-h-[88vh] overflow-hidden bg-praxis-deep text-white">
       <picture>
