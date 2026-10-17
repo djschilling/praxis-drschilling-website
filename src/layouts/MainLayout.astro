@@ -15,10 +15,10 @@ interface Props {
 }
 
 const {
-  title = 'MVZ Gomaringen – Hausarztpraxis Dr. Bernd Schilling',
+  title = 'MVZ Gomaringen – Praxis Dr. Schilling · Hausarzt',
   description =
     'MVZ Gomaringen der MED-GO e.G.: Hausärztliche Versorgung für Menschen jeden Alters in der Lindenstraße 84/1 – mit Manueller Medizin als besonderem Angebot.',
-  ogImageAlt = 'MVZ Gomaringen mit dem Praxisteam',
+  ogImageAlt = 'MVZ Gomaringen – Praxis Dr. Schilling · Hausarzt: Landschaftslogo mit Sonne und das Praxisteam',
   ogImageWidth = 1200,
   ogImageHeight = 630,
   ogImageType = 'image/jpeg',
@@ -32,7 +32,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
 
 const siteOrigin = (Astro.site?.origin ?? praxis.website).replace(/\/$/, '');
 const canonicalURL = new URL(Astro.url.pathname, `${siteOrigin}/`);
-const defaultOgImage = new URL(`${baseUrl}images/social/mvz-gomaringen-team-og.jpg`, `${siteOrigin}/`);
+const defaultOgImage = new URL(`${baseUrl}images/social/mvz-gomaringen-landschaft-team-og.jpg`, `${siteOrigin}/`);
 const ogImageURL = Astro.props.ogImage
   ? new URL(Astro.props.ogImage, `${siteOrigin}/`)
   : defaultOgImage;
