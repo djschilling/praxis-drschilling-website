@@ -1,5 +1,6 @@
 ---
 import { praxis } from '../data/praxis';
+import Brand from './Brand.astro';
 
 interface Props {
   current?: 'home' | 'impressum' | 'datenschutz';
@@ -17,11 +18,11 @@ const datenschutzHref = `${baseUrl}datenschutz/`;
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-[color:var(--line)] text-praxis-deep shadow-sm">
-  <div class="section-pad flex items-center justify-between gap-4 py-3.5">
-    <a href={homeHref} class="brand-font text-lg font-semibold tracking-tight text-praxis-deep sm:text-xl">
-      {praxis.shortName}
+  <div class="section-pad flex flex-wrap items-center justify-between gap-4 py-3.5">
+    <a href={homeHref} class="min-w-0 text-praxis-deep" aria-label="MVZ Gomaringen – Startseite">
+      <Brand />
     </a>
-    <nav class="flex items-center gap-5 text-sm font-semibold text-praxis-ink" aria-label="Rechtliche Navigation">
+    <nav class="flex flex-wrap items-center gap-5 text-sm font-semibold text-praxis-ink" aria-label="Rechtliche Navigation">
       <a
         href={homeHref}
         class:list={['link-underline hover:text-praxis-accent', current === 'home' && 'text-praxis-accent']}

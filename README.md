@@ -16,6 +16,28 @@ npm run build
 npm run preview
 ```
 
+## Logo und Favicon
+
+Die Navigation auf Startseite, Impressum und Datenschutz verwendet das Landschaftslogo
+mit Sonne (`public/images/brand/landschaft-c.png`, transparente PNG, 528 × 382 px).
+Die zweizeilige HTML-Wortmarke steht in `src/components/Brand.astro`:
+„MVZ Gomaringen“ in Fraunces 550, „Praxis Dr. Schilling · Hausarzt“ in Figtree 400.
+Im Hero wird kein zusätzliches Logo angezeigt.
+
+Die Favicons sind nur verkleinerte Fassungen dieser Original-Bildmarke, keine
+separate SVG-Zeichnung. PNGs (16/32/48 px), ICO und Apple-Touch-Icon (180 px)
+werden in `src/layouts/MainLayout.astro` eingebunden. Reproduktion mit ImageMagick:
+
+```bash
+for size in 16 32 48 180; do
+  magick public/images/brand/landschaft-c.png -filter Lanczos -resize "${size}x${size}" -background none -gravity center -extent "${size}x${size}" -depth 8 "PNG32:public/favicon-${size}.png"
+done
+magick public/favicon-16.png public/favicon-32.png public/favicon-48.png public/favicon.ico
+```
+
+Bei Änderungen der Icons auch die Version in ihren URLs aktualisieren, damit
+Browser keine veralteten Favicons aus dem Cache verwenden.
+
 ## Deployment (GitHub Pages)
 
 GitHub Action ist eingerichtet unter:

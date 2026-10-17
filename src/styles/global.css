@@ -126,6 +126,46 @@ h4,
   background-color: #f7faf8;
 }
 
+.site-header > .section-pad {
+  max-width: 1440px;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.brand-mark {
+  width: clamp(2.5rem, 6vw, 4rem);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.brand-name {
+  font-family: 'Fraunces', 'Georgia', serif;
+  font-weight: 550;
+  font-optical-sizing: auto;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.brand-practice {
+  font-family: 'Figtree', 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.35;
+  white-space: nowrap;
+  font-size: clamp(0.71875rem, 1.2vw, 0.75rem);
+  margin-top: 0.2rem;
+}
+
 .link-underline {
   background-image: linear-gradient(currentColor, currentColor);
   background-position: 0 100%;

@@ -29,7 +29,6 @@ const {
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const faviconHref = `${baseUrl}favicon.svg`;
 
 const siteOrigin = (Astro.site?.origin ?? praxis.website).replace(/\/$/, '');
 const canonicalURL = new URL(Astro.url.pathname, `${siteOrigin}/`);
@@ -47,7 +46,11 @@ const ogImageURL = Astro.props.ogImage
     <meta name="description" content={description} />
     <meta name="theme-color" content="#164039" />
     <link rel="canonical" href={canonicalURL.href} />
-    <link rel="icon" type="image/svg+xml" href={faviconHref} />
+    <link rel="icon" type="image/png" sizes="48x48" href={`${baseUrl}favicon-48.png?v=original-c`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${baseUrl}favicon-32.png?v=original-c`} />
+    <link rel="icon" type="image/png" sizes="16x16" href={`${baseUrl}favicon-16.png?v=original-c`} />
+    <link rel="icon" sizes="16x16 32x32 48x48" href={`${baseUrl}favicon.ico?v=original-c`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${baseUrl}favicon-180.png?v=original-c`} />
     <title>{title}</title>
 
     <meta property="og:type" content={ogType} />
