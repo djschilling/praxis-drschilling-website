@@ -1,0 +1,44 @@
+FLYER ZUR NEUEN WEBSEITE – BESTELLHINWEISE
+
+Bei FLYERALARM auswählen:
+- Standard-Flyer / Flyer Klassiker
+- DIN A6, Hochformat, 10,5 × 14,8 cm
+- Ungefalzt, rechteckig
+- Beidseitig 4/4-farbig
+- Empfehlung: 250 g/m² Bilderdruck matt, ohne zusätzliche Veredelung
+- Gewünschte Auflage selbst wählen
+
+HOCHZULADENDE DATEI
+Flyer-Webseite-A6-Flyeralarm-Druck.pdf
+Seite 1 = Vorderseite, Seite 2 = Rückseite.
+Nicht die PNG-Vorschaubilder und nicht die älteren Varianten-PDFs hochladen.
+
+DATENFORMAT
+107 × 150 mm einschließlich 1 mm Beschnitt auf jeder Seite.
+Endformat nach dem Schneiden: 105 × 148 mm.
+Keine zusätzlichen Schnittmarken oder Beschnittzugaben hinzufügen.
+Die Seiten sind bereits richtig herum angelegt; nicht drehen oder spiegeln.
+
+TECHNISCHE AUSFÜHRUNG
+PDF/X-3:2002, CMYK, ISO Coated v2 300% (ECI), FOGRA39-OutputIntent.
+Fraunces und Figtree eingebettet. Landschaft, Piktogramme und QR-Code als Vektoren.
+Original-Logo in CMYK mit effektiv ca. 808 ppi.
+QR-Code in reinem Schwarz mit freier Ruhezone, direkt auf https://mvz-gomaringen.de.
+
+GEPRÜFT
+Seitenmaße, Beschnitt, eingebettete Schriften und ICC-Profil, RGB-Freiheit,
+Textränder, QR-Decodierung aus der finalen PDF bei 300 dpi und visuelle Darstellung.
+Die Webseite war beim Erstellen unter der QR-Adresse mit HTTP 200 erreichbar.
+
+VOR DER BESTELLFREIGABE
+Das Datenblatt des konkret konfigurierten Produkts muss ebenfalls 107 × 150 mm
+und 1 mm Beschnitt nennen. Für andere Materialien/Formate bitte neu prüfen.
+Die FLYERALARM-Vorschau und den Druckdatencheck prüfen. Texte und Seitenreihenfolge
+noch einmal freigeben. Ein Ausdruck in Originalgröße hilft bei der Größenkontrolle;
+ein Büroausdruck oder Bildschirm ist kein farbverbindlicher Proof.
+Goldfarbene Flächen sind normaler CMYK-Druck, keine Metallicfarbe oder Folie.
+
+Es wurde nichts bei FLYERALARM bestellt oder hochgeladen.
+
+Offizielles Datenblatt:
+https://www.flyeralarm.com/sheets/de/flyer_a6_mass.pdf
