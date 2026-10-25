@@ -1,0 +1,57 @@
+VISITENKARTE J – WALDGRÜN UND SALBEI
+
+BEI FLYERALARM AUSWÄHLEN
+Visitenkarten Klassiker, Querformat 8,5 × 5,5 cm, rechteckig, ungefalzt.
+300 g/m² Bilderdruck matt PEFC, keine zusätzliche Veredelung.
+WICHTIG: 4/4-farbig (beidseitig CMYK), 1 Motiv.
+Der ursprüngliche Produktlink war noch auf 4/0 (einseitig) eingestellt!
+Gewünschte Auflage selbst wählen. Bei Lieferadresse in Deutschland den
+passenden Ländershop verwenden und dessen Produktdatenblatt erneut abgleichen.
+
+HOCHZULADENDE DATEI
+Visitenkarte-J-85x55-Flyeralarm-Druck.pdf
+Seite 1 = Vorderseite mit Logo, Telefon und Webseite.
+Seite 2 = Rückseite mit Sprechzeiten.
+Nicht die PNG-Vorschauen, das Datenblatt oder Entwurfs-PDFs hochladen.
+
+DATENFORMAT UND AUSRICHTUNG
+87 × 57 mm inklusive 1 mm Beschnitt auf jeder Seite.
+Endformat nach dem Schneiden 85 × 55 mm.
+Texte mindestens 3 mm innerhalb des Endformats.
+Keine zusätzlichen Marken, Beschnittzugaben, Drehungen oder Spiegelungen.
+Vorder- und Rückseite gleich ausgerichtet als zwei Einzelseiten in einer PDF.
+
+TECHNISCHE AUSFÜHRUNG
+CMYK, ISO Coated v2 300% (ECI), eingebetteter FOGRA39-OutputIntent.
+PDF 1.3 mit PDF/X-3:2002-Kennung. Keine Transparenzen oder aktiven Links.
+Fraunces und Figtree eingebettet; Schrift und Flächen als Vektoren.
+Original-Logo nach CMYK konvertiert, effektiv ca. 808 ppi.
+Uhrzeiten 16 pt, Tageskürzel 14 pt, Telefon 26,5 pt, Webadresse 15,5 pt.
+Goldfarbene Flächen sind normaler CMYK-Druck, keine Metallicfarbe oder Folie.
+
+GEPRÜFT
+Seitenformat und Boxen, Einbettungen, Sicherheitsabstände, Schriftgrößen,
+RGB-Freiheit, fehlende Transparenzmasken/Annotationen, Telefonnummer,
+Webadresse, Tageszuordnung und Gedankenstriche in der finalen PDF.
+Beide finalen Ansichten visuell kontrolliert.
+Unabhängige Ghostscript-Interpretation ohne Fehler, Farbauftrag bei 300 dpi
+maximal 259,2 % auf Seite 1 und 237,3 % auf Seite 2 (unter 300 %).
+Diese Prüfungen ersetzen keinen zertifizierten PDF/X-Preflight oder Datencheck.
+
+VOR DER BESTELLFREIGABE
+Das Datenblatt der tatsächlich gewählten Konfiguration muss weiterhin
+87 × 57 mm, Endformat 85 × 55 mm und 1 mm Beschnitt vorgeben.
+Druckereivorschau, Datencheck, Seitenreihenfolge und Inhalte kontrollieren.
+Ein Ausdruck bei 100 % hilft bei der Lesbarkeitskontrolle.
+Bildschirmdarstellung und Büroausdruck sind kein farbverbindlicher Proof.
+FLYERALARM empfiehlt inzwischen PDF/X-4; hier wird wie beim Flyer die weiterhin
+dokumentierte PDF/X-3-Ausführung für eine vollständig opake Gestaltung verwendet.
+Es wurde nichts bestellt oder bei der Druckerei hochgeladen.
+
+QUELLEN
+Produktlink (ursprünglich einseitig konfiguriert):
+https://www.flyeralarm.com/at/p/visitenkarten-klassiker-4321237.html#/p/FV-4321679&/l/7050
+Datenblatt:
+https://www.flyeralarm.com/sheets/de/vk_mass_q.pdf
+Druckdaten-Anleitung:
+https://www.flyeralarm.com/blog/de/tutorial-druckfaehiges-pdf-mit-indesign-erstellen/
