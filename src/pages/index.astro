@@ -140,6 +140,13 @@ const structuredData = {
       validThrough: '2026-09-25',
       opens: '00:00',
       closes: '00:00'
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      validFrom: '2026-11-18',
+      validThrough: '2026-11-18',
+      opens: '00:00',
+      closes: '00:00'
     }
   ]
 };
@@ -232,7 +239,7 @@ const structuredData = {
         {
           hinweise.map((hinweis) => (
             <article
-              class="flex gap-3 border-l-4 border-praxis-highlight pl-4 sm:items-center sm:gap-4 sm:pl-5"
+              class="flex gap-3 border-l-4 border-praxis-highlight pl-4 sm:items-center sm:gap-4 sm:pl-5 [&[hidden]]:hidden"
               data-hinweis
               data-sichtbar-ab={hinweis.sichtbarAb}
               data-sichtbar-bis={hinweis.sichtbarBis}
