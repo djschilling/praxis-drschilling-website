@@ -112,6 +112,12 @@ const structuredData = {
   url: praxis.website,
   telephone: praxis.phoneTel,
   image: `${praxis.website}/images/team/praxis-team.jpg`,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${praxis.website}/`,
+    url: `${praxis.website}/`,
+    primaryImageOfPage: `${praxis.website}/images/team/praxis-team.jpg`
+  },
   logo: `${praxis.website}${baseUrl}images/brand/landschaft-c.png`,
   description:
     'Hausärztliche Versorgung für Menschen jeden Alters in Gomaringen mit Manueller Medizin als zusätzlichem Angebot.',
