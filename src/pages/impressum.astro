@@ -44,6 +44,18 @@ import MainLayout from '../layouts/MainLayout.astro';
         </section>
 
         <section>
+          <h2 class="text-xl font-semibold text-praxis-deep">Für ärztliche Kolleginnen und Kollegen</h2>
+          <p class="mt-3 leading-relaxed">
+            KIM-Adresse: <span class="break-all font-semibold text-praxis-deep">{praxis.kimAddress}</span>
+          </p>
+          <p class="mt-3 leading-relaxed">
+            KIM (Kommunikation im Medizinwesen) dient dem sicheren Austausch im Gesundheitswesen.
+            Diese Adresse ist nicht über normale E-Mail erreichbar. Für Terminvereinbarungen rufen Sie
+            uns bitte unter {praxis.phoneDisplay} an.
+          </p>
+        </section>
+
+        <section>
           <h2 class="text-xl font-semibold text-praxis-deep">Vertretung / Register</h2>
           <p class="mt-3 leading-relaxed">
             Die {praxis.provider} wird durch ihren Vorstand vertreten.

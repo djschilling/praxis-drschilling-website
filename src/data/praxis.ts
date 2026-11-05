@@ -8,6 +8,7 @@ export const praxis = {
   phoneDisplay: '07072 / 7031',
   phoneTel: '+4970727031',
   faxDisplay: '07072 / 912690',
+  kimAddress: 'mvz.gomaringen@dgn.kim.telematik',
   website: 'https://mvz-gomaringen.de',
   /** Träger / Anbieter im Sinne des DDG */
   provider: 'MED-GO e.G.',
