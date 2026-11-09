@@ -5,8 +5,8 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Brand from '../components/Brand.astro';
 
 const buildZeitpunkt = Date.now();
-const istAktuell = (sichtbarAb: string, sichtbarBis?: string) =>
-  buildZeitpunkt >= Date.parse(sichtbarAb) && (!sichtbarBis || buildZeitpunkt < Date.parse(sichtbarBis));
+const istAktuell = (sichtbarAb: string, sichtbarBis: string) =>
+  buildZeitpunkt >= Date.parse(sichtbarAb) && buildZeitpunkt < Date.parse(sichtbarBis);
 
 const leitbild = [
   {
@@ -241,7 +241,7 @@ const structuredData = {
       data-hinweise
       hidden={!hinweise.some((hinweis) => istAktuell(hinweis.sichtbarAb, hinweis.sichtbarBis))}
     >
-      <div class="section-pad space-y-4 py-4 sm:py-5">
+      <div class="section-pad py-4 sm:py-5">
         {
           hinweise.map((hinweis) => (
             <article
@@ -282,8 +282,8 @@ const structuredData = {
 
         bereich?.querySelectorAll('[data-hinweis]').forEach((hinweis) => {
           const sichtbarAb = Date.parse(hinweis.getAttribute('data-sichtbar-ab') ?? '');
-          const sichtbarBis = hinweis.getAttribute('data-sichtbar-bis');
-          const istSichtbar = jetzt >= sichtbarAb && (!sichtbarBis || jetzt < Date.parse(sichtbarBis));
+          const sichtbarBis = Date.parse(hinweis.getAttribute('data-sichtbar-bis') ?? '');
+          const istSichtbar = jetzt >= sichtbarAb && jetzt < sichtbarBis;
 
           hinweis.toggleAttribute('hidden', !istSichtbar);
           hatAktuelleHinweise ||= istSichtbar;
