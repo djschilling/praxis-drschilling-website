@@ -3,10 +3,17 @@ export interface Hinweis {
   titel: string;
   text: string;
   sichtbarAb: string;
-  sichtbarBis: string;
+  sichtbarBis?: string;
 }
 
 export const hinweise: Hinweis[] = [
+  {
+    id: 'telefonstoerung',
+    titel: 'Telefonanschluss gestört',
+    text:
+      'Unser Telefonanschluss funktioniert zurzeit leider nicht. Wir sind deshalb telefonisch nicht erreichbar. Wir bitten um Ihr Verständnis.',
+    sichtbarAb: '2026-11-09T00:00:00+01:00'
+  },
   {
     id: 'praxisschliessung-september-2026',
     titel: 'Praxis geschlossen',
