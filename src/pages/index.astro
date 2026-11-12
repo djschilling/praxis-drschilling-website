@@ -156,6 +156,7 @@ const structuredData = {
       <div class="ml-auto flex shrink-0 items-center gap-2">
         <a
           href={`tel:${praxis.phoneTel}`}
+          data-umami-event="kontakt-telefon"
           aria-label={`Praxis anrufen: ${praxis.phoneDisplay}`}
           class="hidden items-center justify-center rounded-md bg-praxis-deep px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-praxis-mid sm:flex"
         >
@@ -185,7 +186,7 @@ const structuredData = {
             <a href="#termin" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Termin</a>
             <a href="#leitbild" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Leitbild</a>
             <a href="#kontakt" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Kontakt</a>
-            <a href={`tel:${praxis.phoneTel}`} class="mt-2 block rounded bg-praxis-deep px-4 py-3 text-white hover:bg-praxis-mid sm:hidden">Anrufen: {praxis.phoneDisplay}</a>
+            <a href={`tel:${praxis.phoneTel}`} data-umami-event="kontakt-telefon" class="mt-2 block rounded bg-praxis-deep px-4 py-3 text-white hover:bg-praxis-mid sm:hidden">Anrufen: {praxis.phoneDisplay}</a>
           </nav>
         </details>
       </div>
@@ -332,12 +333,14 @@ const structuredData = {
           <div class="mt-9 flex flex-wrap gap-3">
             <a
               href={`tel:${praxis.phoneTel}`}
+              data-umami-event="kontakt-telefon"
               class="rounded-md bg-white px-5 py-3 text-sm font-semibold text-praxis-deep shadow-lift transition hover:bg-praxis-soft"
             >
               Termin telefonisch vereinbaren
             </a>
             <a
               href="#oeffnungszeiten"
+              data-umami-event="kontakt-oeffnungszeiten"
               class="rounded-md border border-white/45 px-5 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
             >
               Öffnungszeiten
@@ -403,6 +406,7 @@ const structuredData = {
           </ul>
           <a
             href={`tel:${praxis.phoneTel}`}
+            data-umami-event="kontakt-telefon"
             class="mt-8 inline-flex rounded-md bg-praxis-highlight px-4 py-2.5 text-sm font-semibold text-praxis-deep transition hover:brightness-110"
           >
             Termin telefonisch vereinbaren
@@ -517,7 +521,7 @@ const structuredData = {
         <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
           Wir sind eine Bestellpraxis – bitte vereinbaren Sie Ihren Termin immer vorab. Termine vergeben wir
           derzeit telefonisch unter
-          <a href={`tel:${praxis.phoneTel}`} class="font-semibold text-praxis-deep link-underline">{praxis.phoneDisplay}</a>.
+          <a href={`tel:${praxis.phoneTel}`} data-umami-event="kontakt-telefon" class="font-semibold text-praxis-deep link-underline">{praxis.phoneDisplay}</a>.
         </p>
         <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
           Wiederholungsrezepte und Überweisungen können Sie telefonisch anfordern und in der Regel am Folgetag
@@ -525,6 +529,7 @@ const structuredData = {
         </p>
         <a
           href={`tel:${praxis.phoneTel}`}
+          data-umami-event="kontakt-telefon"
           class="mt-8 inline-flex rounded-md bg-praxis-deep px-5 py-3 text-sm font-semibold text-white transition hover:bg-praxis-mid"
         >
           Jetzt anrufen: {praxis.phoneDisplay}
@@ -568,7 +573,7 @@ const structuredData = {
             {praxis.zip} {praxis.city}
           </address>
           <p class="mt-5 space-y-1 text-white/80">
-            <a href={`tel:${praxis.phoneTel}`} class="block font-semibold text-white link-underline">Telefon: {praxis.phoneDisplay}</a>
+            <a href={`tel:${praxis.phoneTel}`} data-umami-event="kontakt-telefon" class="block font-semibold text-white link-underline">Telefon: {praxis.phoneDisplay}</a>
             <span class="block">Fax: {praxis.faxDisplay}</span>
           </p>
 
@@ -588,6 +593,7 @@ const structuredData = {
             <a
               href="https://www.google.de/maps/place/Dr.med.+Bernd+Schilling/@48.4559471,9.100379,68m/data=!3m1!1e3!4m14!1m7!3m6!1s0x4799f0bee7475661:0xfeaafcb3fac02fcc!2sDr.med.+Bernd+Schilling!8m2!3d48.4559661!4d9.1008052!16s%2Fg%2F1vfp74xh!3m5!1s0x4799f0bee7475661:0xfeaafcb3fac02fcc!8m2!3d48.4559661!4d9.1008052!16s%2Fg%2F1vfp74xh?entry=ttu&amp;g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D"
               class="mt-5 inline-flex items-center gap-2 rounded-md border border-white/35 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+              data-umami-event="kontakt-route"
               target="_blank"
               rel="noopener noreferrer"
             >
