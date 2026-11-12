@@ -7,6 +7,7 @@ print export additionally requires ISOcoated_v2_300_eci.icc.
 
 import argparse
 import io
+import json
 from pathlib import Path
 import re
 import tempfile
@@ -41,16 +42,15 @@ def main():
     if args.icc:
         args.icc = args.icc.resolve()
     args.out.mkdir(parents=True, exist_ok=True)
-    source = (ROOT / 'src/pages/index.astro').read_text()
-    block = source.split('const oeffnungszeiten = [', 1)[1].split('];', 1)[0]
-    hours = re.findall(r"tag: '([^']+)', zeit: '([^']+)'", block)
+    hours = json.loads((ROOT / 'src/data/oeffnungszeiten.json').read_text(encoding='utf-8'))
     assert len(hours) == 5
     website = re.search(r"website: '([^']+)'", (ROOT / 'src/data/praxis.ts').read_text()).group(1)
     domain = website.removeprefix('https://').rstrip('/')
     rows = []
-    for day, value in hours:
-        sessions = value.removesuffix(' Uhr').split(' und ')
-        rows.append((day, sessions[0], sessions[1] if len(sessions) == 2 else '–'))
+    for entry in hours:
+        assert 1 <= len(entry['zeiten']) <= 2, 'Card layout supports one or two sessions per day'
+        sessions = [' – '.join(time.removeprefix('0') for time in session) for session in entry['zeiten']]
+        rows.append((entry['tag'], sessions[0], sessions[1] if len(sessions) == 2 else '–'))
 
     with tempfile.TemporaryDirectory(prefix='visitenkarte-') as tmp:
         tmp = Path(tmp)

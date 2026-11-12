@@ -28,6 +28,8 @@ QR-Code in reinem Schwarz mit freier Ruhezone, direkt auf https://mvz-gomaringen
 GEPRÜFT
 Seitenmaße, Beschnitt, eingebettete Schriften und ICC-Profil, RGB-Freiheit,
 Textränder, QR-Decodierung aus der finalen PDF bei 300 dpi und visuelle Darstellung.
+Text vor/nach Export identisch; Umlaute und Mittelpunkt mit PyMuPDF und
+pdftotext korrekt extrahiert. Korrigierter Export mit Ghostscript 10.05.1.
 Die Webseite war beim Erstellen unter der QR-Adresse mit HTTP 200 erreichbar.
 
 VOR DER BESTELLFREIGABE

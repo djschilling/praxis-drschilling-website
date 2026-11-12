@@ -228,6 +228,8 @@ def main():
         ]
         result = subprocess.run(command, check=True, capture_output=True, text=True)
         (args.out / f'{PREFIX}-Exportprotokoll.txt').write_text(result.stdout + result.stderr)
+        with fitz.open(intermediate) as source:
+            source_text = [page.get_text() for page in source]
 
     doc = fitz.open(output)
     assert len(doc) == 2
@@ -244,6 +246,13 @@ def main():
         assert '/DeviceRGB' not in obj and '/SMask' not in obj
     qr_results = []
     for i, page in enumerate(doc):
+        extracted_text = page.get_text()
+        assert extracted_text == source_text[i], 'PDF export changed text; use Ghostscript 10.05.1 or newer'
+        assert 'Praxis Dr. Schilling · Hausarzt' in extracted_text
+        if i == 1:
+            for phrase in ['Öffnungszeiten und Kontaktdaten.', 'Ein Überblick für Sie.',
+                           'Alles übersichtlich auf unserer neuen Webseite.']:
+                assert phrase in extracted_text, f'Missing Unicode text: {phrase}'
         assert page.rotation == 0
         assert abs(page.rect.width/mm-107) < .01 and abs(page.rect.height/mm-150) < .01
         assert abs(page.trimbox.width/mm-105) < .01 and abs(page.trimbox.height/mm-148) < .01
@@ -265,6 +274,7 @@ def main():
     assert qr_results == [URL], qr_results
     print('OK: 2 Seiten, 107 × 150 mm, TrimBox 105 × 148 mm, 1 mm Beschnitt, 0° Drehung.')
     print('OK: Alle Schriften eingebettet, Texte ≥4 mm innerhalb des Endformats.')
+    print('OK: Text vor/nach Export identisch; Umlaute und Mittelpunkt korrekt extrahierbar.')
     print('OK: PDF/X-3-Kennung, ECI-OutputIntent, kein RGB, keine Transparenzmasken oder Annotationen.')
     print(f'OK: QR aus der finalen Druck-PDF bei 300 dpi dekodiert: {qr_results[0]}')
     print(output)

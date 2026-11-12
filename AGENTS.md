@@ -9,7 +9,7 @@
 - Praxisdaten konsistent halten:
   - Name: Dr. Bernd Schilling (volle Bezeichnung Dr. med. univ. Bernd Schilling nur im Impressum)
   - Ort: Gomaringen
-  - Adresse: Lindenstrasse 84
+  - Adresse: Lindenstraße 84/1, 72810 Gomaringen
   - Telefon: 07072 / 7031
 - Sprache: Deutsch (de-DE), klar und freundlich, ohne Marketingfloskeln.
 - Historie und familiaerer Charakter der Praxis beibehalten (3. Generation, ueber 100 Jahre).

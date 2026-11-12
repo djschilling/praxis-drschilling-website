@@ -43,14 +43,19 @@ die Gestaltung benötigt keine Transparenzen oder andere PDF/X-4-Funktionen.
 
 ## Reproduktion
 
-Systemvoraussetzung: Ghostscript (`gs`). Python-Abhängigkeiten in einer separaten
-Umgebung installieren; der Astro-Abhängigkeitsbaum wird nicht verändert:
+Systemvoraussetzung: Ghostscript (`gs`), getestet mit 10.05.1. Der frühere Export
+mit 10.00.0 verlor die Unicode-Zuordnung der Schriften: Umlaute und Mittelpunkt
+waren sichtbar, wurden aber beim Kopieren/Extrahieren beschädigt. Bei älteren
+Versionen kann die neue Textprüfung deshalb fehlschlagen; dann Ghostscript aktualisieren.
+Python-Abhängigkeiten in einer separaten Umgebung installieren; der
+Astro-Abhängigkeitsbaum wird nicht verändert:
 
 ```sh
 uv venv /tmp/flyer-venv
 uv pip install --python /tmp/flyer-venv/bin/python \
-  'fonttools[woff]' Pillow reportlab PyMuPDF qrcode zxing-cpp
-curl -L https://eci.org/lib/exe/eci_offset_2009.zip -o /tmp/eci-offset.zip
+  'fonttools[woff]==4.68.0' 'Pillow==13.0.0' 'reportlab==5.1.0' \
+  'PyMuPDF==2.1' 'qrcode==8.2' 'zxing-cpp==3.1.1'
+curl -fL https://eci.org/lib/exe/eci_offset_2009.zip -o /tmp/eci-offset.zip
 unzip -p /tmp/eci-offset.zip ECI_Offset_2009/ISOcoated_v2_300_eci.icc \
   > /tmp/ISOcoated_v2_300_eci.icc
 /tmp/flyer-venv/bin/python design/flyer-webseite/generate.py \
@@ -64,6 +69,11 @@ Der Export prüft Seitenformat, TrimBox, Drehung, Textränder, eingebettete
 Schriften und ICC-Profil, PDF/X-Kennung, RGB-Farbräume, Transparenzmasken,
 Annotationen und den QR-Code aus der finalen PDF bei 300 dpi. Diese Prüfungen
 sind kein vollständiger zertifizierter PDF/X-Preflight und kein Druckerei-Datencheck.
+
+Zusätzlich muss der extrahierte Text vor und nach dem Ghostscript-Export exakt
+übereinstimmen. Umlaute in „Öffnungszeiten“, „Überblick“, „für“, „übersichtlich“
+und der Mittelpunkt in der Wortmarke werden explizit geprüft. Die korrigierte
+Druckdatei wurde außerdem mit Popplers `pdftotext` kontrolliert.
 
 Die statischen Fontinstanzen werden direkt aus den Website-WOFF2-Dateien mit
 deren Standardachsen erzeugt: Fraunces 550/600, Figtree 400/600. Änderungen an

@@ -129,7 +129,7 @@ Farben und Landschaftsformen orientieren sich an `design/flyer-webseite/`.
 Die visuelle Exploration erfolgte mit Painter; die gezeigten finalen Vorschauen
 sind reproduzierbarer PDF-Satz mit echten Schriften und dem Originalbild.
 
-Die Sprechzeiten werden beim Erzeugen direkt aus `src/pages/index.astro`
+Die Sprechzeiten werden beim Erzeugen direkt aus `src/data/oeffnungszeiten.json`
 übernommen: Montag bis Freitag 8:00–12:00, Montag/Mittwoch zusätzlich
 16:00–18:00, Freitag zusätzlich 15:00–16:00 Uhr.
 Telefon: 07072 / 7031. Keine Adresse, QR-Codes oder Werbetexte.

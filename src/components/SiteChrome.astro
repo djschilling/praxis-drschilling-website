@@ -25,18 +25,21 @@ const datenschutzHref = `${baseUrl}datenschutz/`;
     <nav class="flex flex-wrap items-center gap-5 text-sm font-semibold text-praxis-ink" aria-label="Rechtliche Navigation">
       <a
         href={homeHref}
+        aria-current={current === 'home' ? 'page' : undefined}
         class:list={['link-underline hover:text-praxis-accent', current === 'home' && 'text-praxis-accent']}
       >
         Startseite
       </a>
       <a
         href={impressumHref}
+        aria-current={current === 'impressum' ? 'page' : undefined}
         class:list={['link-underline hover:text-praxis-accent', current === 'impressum' && 'text-praxis-accent']}
       >
         Impressum
       </a>
       <a
         href={datenschutzHref}
+        aria-current={current === 'datenschutz' ? 'page' : undefined}
         class:list={['link-underline hover:text-praxis-accent', current === 'datenschutz' && 'text-praxis-accent']}
       >
         Datenschutz

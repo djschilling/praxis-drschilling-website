@@ -1,12 +1,9 @@
 ---
 import { hinweise } from '../data/hinweise';
+import oeffnungszeiten from '../data/oeffnungszeiten.json';
 import { praxis } from '../data/praxis';
 import MainLayout from '../layouts/MainLayout.astro';
 import Brand from '../components/Brand.astro';
-
-const buildZeitpunkt = Date.now();
-const istAktuell = (sichtbarAb: string, sichtbarBis: string) =>
-  buildZeitpunkt >= Date.parse(sichtbarAb) && buildZeitpunkt < Date.parse(sichtbarBis);
 
 const leitbild = [
   {
@@ -87,14 +84,6 @@ const team = [
 const teamImage = `${baseUrl}images/team/praxis-team.jpg`;
 const teamImageWebpSrcset = `${baseUrl}images/team/praxis-team-1200.webp 1200w, ${baseUrl}images/team/praxis-team-2000.webp 2000w`;
 
-const oeffnungszeiten = [
-  { tag: 'Montag', zeit: '8:00 – 12:00 und 16:00 – 18:00 Uhr' },
-  { tag: 'Dienstag', zeit: '8:00 – 12:00 Uhr' },
-  { tag: 'Mittwoch', zeit: '8:00 – 12:00 und 16:00 – 18:00 Uhr' },
-  { tag: 'Donnerstag', zeit: '8:00 – 12:00 Uhr' },
-  { tag: 'Freitag', zeit: '8:00 – 12:00 und 15:00 – 16:00 Uhr' }
-];
-
 const notfall = [
   { label: 'Notarzt / Rettungsdienst', nummer: '112' },
   { label: 'Ärztlicher Bereitschaftsdienst', nummer: '116 117' },
@@ -129,32 +118,23 @@ const structuredData = {
     addressLocality: praxis.city,
     addressCountry: 'DE'
   },
-  openingHoursSpecification: [
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Monday', opens: '08:00', closes: '12:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Monday', opens: '16:00', closes: '18:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Tuesday', opens: '08:00', closes: '12:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Wednesday', opens: '08:00', closes: '12:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Wednesday', opens: '16:00', closes: '18:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Thursday', opens: '08:00', closes: '12:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Friday', opens: '08:00', closes: '12:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Friday', opens: '15:00', closes: '16:00' }
-  ],
-  specialOpeningHoursSpecification: [
-    {
+  openingHoursSpecification: oeffnungszeiten.flatMap((eintrag) =>
+    eintrag.zeiten.map(([opens, closes]) => ({
       '@type': 'OpeningHoursSpecification',
-      validFrom: '2026-09-25',
-      validThrough: '2026-09-25',
+      dayOfWeek: `https://schema.org/${eintrag.dayOfWeek}`,
+      opens,
+      closes
+    }))
+  ),
+  specialOpeningHoursSpecification: hinweise.flatMap((hinweis) =>
+    (hinweis.geschlossenAm ?? []).map((datum) => ({
+      '@type': 'OpeningHoursSpecification',
+      validFrom: datum,
+      validThrough: datum,
       opens: '00:00',
       closes: '00:00'
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      validFrom: '2026-11-18',
-      validThrough: '2026-11-18',
-      opens: '00:00',
-      closes: '00:00'
-    }
-  ]
+    }))
+  )
 };
 ---
 
@@ -175,18 +155,17 @@ const structuredData = {
       </nav>
       <div class="ml-auto flex shrink-0 items-center gap-2">
         <a
-          href="tel:+4970727031"
-          aria-label="Praxis anrufen: 07072 / 7031"
+          href={`tel:${praxis.phoneTel}`}
+          aria-label={`Praxis anrufen: ${praxis.phoneDisplay}`}
           class="hidden items-center justify-center rounded-md bg-praxis-deep px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-praxis-mid sm:flex"
         >
-          07072 / 7031
+          {praxis.phoneDisplay}
         </a>
 
         <details id="mobile-navigation" class="group relative xl:hidden">
           <summary
             class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-md border border-[color:var(--line)] bg-white text-praxis-deep transition hover:border-praxis-accent hover:text-praxis-accent [&::-webkit-details-marker]:hidden"
             aria-label="Navigation öffnen"
-            aria-expanded="false"
           >
             <svg class="h-5 w-5 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -206,7 +185,7 @@ const structuredData = {
             <a href="#termin" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Termin</a>
             <a href="#leitbild" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Leitbild</a>
             <a href="#kontakt" class="block rounded px-4 py-3 hover:bg-praxis-mist hover:text-praxis-accent">Kontakt</a>
-            <a href="tel:+4970727031" class="mt-2 block rounded bg-praxis-deep px-4 py-3 text-white hover:bg-praxis-mid sm:hidden">Anrufen: 07072 / 7031</a>
+            <a href={`tel:${praxis.phoneTel}`} class="mt-2 block rounded bg-praxis-deep px-4 py-3 text-white hover:bg-praxis-mid sm:hidden">Anrufen: {praxis.phoneDisplay}</a>
           </nav>
         </details>
       </div>
@@ -219,7 +198,6 @@ const structuredData = {
 
     mobileNavigation?.addEventListener('toggle', () => {
       const isOpen = mobileNavigation.hasAttribute('open');
-      mobileNavigationToggle?.setAttribute('aria-expanded', String(isOpen));
       mobileNavigationToggle?.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
     });
 
@@ -237,11 +215,17 @@ const structuredData = {
   <main id="start">
     <section
       class="border-b border-praxis-highlight/40 bg-praxis-highlight/15"
-      aria-label="Aktuelle Hinweise"
+      aria-label="Praxishinweise"
       data-hinweise
-      hidden={!hinweise.some((hinweis) => istAktuell(hinweis.sichtbarAb, hinweis.sichtbarBis))}
+      hidden={hinweise.length === 0}
     >
       <div class="section-pad py-4 sm:py-5">
+        <noscript>
+          <p class="mb-3 text-sm text-[color:var(--text-soft)]">
+            Ohne JavaScript werden Hinweise nicht automatisch nach Datum gefiltert.
+            Bitte beachten Sie das jeweils genannte Datum.
+          </p>
+        </noscript>
         {
           hinweise.map((hinweis) => (
             <article
@@ -249,7 +233,6 @@ const structuredData = {
               data-hinweis
               data-sichtbar-ab={hinweis.sichtbarAb}
               data-sichtbar-bis={hinweis.sichtbarBis}
-              hidden={!istAktuell(hinweis.sichtbarAb, hinweis.sichtbarBis)}
             >
               <svg
                 class="mt-0.5 h-5 w-5 shrink-0 text-praxis-deep sm:mt-0 sm:h-6 sm:w-6"
@@ -277,25 +260,47 @@ const structuredData = {
     <script is:inline>
       (() => {
         const bereich = document.querySelector('[data-hinweise]');
-        const jetzt = Date.now();
-        let hatAktuelleHinweise = false;
+        if (!bereich) return;
+        let timer;
 
-        bereich?.querySelectorAll('[data-hinweis]').forEach((hinweis) => {
-          const sichtbarAb = Date.parse(hinweis.getAttribute('data-sichtbar-ab') ?? '');
-          const sichtbarBis = Date.parse(hinweis.getAttribute('data-sichtbar-bis') ?? '');
-          const istSichtbar = jetzt >= sichtbarAb && jetzt < sichtbarBis;
+        const aktualisieren = () => {
+          clearTimeout(timer);
+          const jetzt = Date.now();
+          // Also recover from clock changes without waiting for a distant boundary.
+          let naechstePruefung = jetzt + 60_000;
+          let hatAktuelleHinweise = false;
 
-          hinweis.toggleAttribute('hidden', !istSichtbar);
-          hatAktuelleHinweise ||= istSichtbar;
-        });
+          bereich.querySelectorAll('[data-hinweis]').forEach((hinweis) => {
+            const sichtbarAb = Date.parse(hinweis.getAttribute('data-sichtbar-ab') ?? '');
+            const sichtbarBis = Date.parse(hinweis.getAttribute('data-sichtbar-bis') ?? '');
+            const istSichtbar = jetzt >= sichtbarAb && jetzt < sichtbarBis;
 
-        bereich?.toggleAttribute('hidden', !hatAktuelleHinweise);
+            hinweis.toggleAttribute('hidden', !istSichtbar);
+            hatAktuelleHinweise ||= istSichtbar;
+            for (const grenze of [sichtbarAb, sichtbarBis]) {
+              if (grenze > jetzt) naechstePruefung = Math.min(naechstePruefung, grenze);
+            }
+          });
+
+          bereich.toggleAttribute('hidden', !hatAktuelleHinweise);
+          timer = setTimeout(aktualisieren, naechstePruefung - jetzt);
+        };
+
+        aktualisieren();
+        window.addEventListener('pageshow', aktualisieren);
+        window.addEventListener('focus', aktualisieren);
+        document.addEventListener('visibilitychange', aktualisieren);
       })();
     </script>
 
     <!-- Hero: Ortsfoto vollflächig, Brand zuerst -->
     <section class="relative min-h-[88vh] overflow-hidden bg-praxis-deep text-white">
       <picture>
+        <source
+          type="image/avif"
+          srcset={`${baseUrl}images/hero/gomaringen-tal-1600.avif 1600w, ${baseUrl}images/hero/gomaringen-tal-2400.avif 2400w`}
+          sizes="(max-width: 640px) 1400px, 100vw"
+        />
         <source
           type="image/webp"
           srcset={`${baseUrl}images/hero/gomaringen-tal-1600.webp 1600w, ${baseUrl}images/hero/gomaringen-tal-2400.webp 2400w`}
@@ -326,7 +331,7 @@ const structuredData = {
           </p>
           <div class="mt-9 flex flex-wrap gap-3">
             <a
-              href="tel:+4970727031"
+              href={`tel:${praxis.phoneTel}`}
               class="rounded-md bg-white px-5 py-3 text-sm font-semibold text-praxis-deep shadow-lift transition hover:bg-praxis-soft"
             >
               Termin telefonisch vereinbaren
@@ -397,7 +402,7 @@ const structuredData = {
             </li>
           </ul>
           <a
-            href="tel:+4970727031"
+            href={`tel:${praxis.phoneTel}`}
             class="mt-8 inline-flex rounded-md bg-praxis-highlight px-4 py-2.5 text-sm font-semibold text-praxis-deep transition hover:brightness-110"
           >
             Termin telefonisch vereinbaren
@@ -512,17 +517,17 @@ const structuredData = {
         <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
           Wir sind eine Bestellpraxis – bitte vereinbaren Sie Ihren Termin immer vorab. Termine vergeben wir
           derzeit telefonisch unter
-          <a href="tel:+4970727031" class="font-semibold text-praxis-deep link-underline">07072 / 7031</a>.
+          <a href={`tel:${praxis.phoneTel}`} class="font-semibold text-praxis-deep link-underline">{praxis.phoneDisplay}</a>.
         </p>
         <p class="mt-4 leading-relaxed text-[color:var(--text-soft)]">
           Wiederholungsrezepte und Überweisungen können Sie telefonisch anfordern und in der Regel am Folgetag
           abholen.
         </p>
         <a
-          href="tel:+4970727031"
+          href={`tel:${praxis.phoneTel}`}
           class="mt-8 inline-flex rounded-md bg-praxis-deep px-5 py-3 text-sm font-semibold text-white transition hover:bg-praxis-mid"
         >
-          Jetzt anrufen: 07072 / 7031
+          Jetzt anrufen: {praxis.phoneDisplay}
         </a>
       </div>
     </section>
@@ -558,13 +563,13 @@ const structuredData = {
           <p class="text-sm font-semibold uppercase tracking-[0.14em] text-praxis-highlight">Kontakt</p>
           <h2 class="mt-3 text-3xl font-semibold">So erreichen Sie uns</h2>
           <address class="mt-6 not-italic leading-relaxed text-white/80">
-            MVZ Gomaringen der MED-GO e.G.<br />
-            Lindenstraße 84/1<br />
-            72810 Gomaringen
+            {praxis.legalName}<br />
+            {praxis.street}<br />
+            {praxis.zip} {praxis.city}
           </address>
           <p class="mt-5 space-y-1 text-white/80">
-            <a href="tel:+4970727031" class="block font-semibold text-white link-underline">Telefon: 07072 / 7031</a>
-            <span class="block">Fax: 07072 / 912690</span>
+            <a href={`tel:${praxis.phoneTel}`} class="block font-semibold text-white link-underline">Telefon: {praxis.phoneDisplay}</a>
+            <span class="block">Fax: {praxis.faxDisplay}</span>
           </p>
 
           <div class="mt-6 text-sm leading-relaxed text-white/75">
@@ -594,14 +599,14 @@ const structuredData = {
           </div>
         </div>
 
-        <div id="oeffnungszeiten" class="scroll-mt-24">
+        <div id="oeffnungszeiten">
           <h3 class="text-xl font-semibold">Öffnungszeiten</h3>
           <dl class="mt-5 space-y-3 text-sm">
             {
               oeffnungszeiten.map((eintrag) => (
                 <div class="grid grid-cols-[7rem_1fr] gap-2 border-b border-white/10 pb-2">
                   <dt class="font-semibold text-white">{eintrag.tag}</dt>
-                  <dd class="text-white/75">{eintrag.zeit}</dd>
+                  <dd class="text-white/75">{eintrag.zeiten.map((zeit) => zeit.map((uhrzeit) => uhrzeit.replace(/^0/, '')).join(' – ')).join(' und ')} Uhr</dd>
                 </div>
               ))
             }
@@ -631,7 +636,7 @@ const structuredData = {
 
       <div class="border-t border-white/10">
         <div class="section-pad flex flex-col gap-3 py-6 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} MVZ Gomaringen der MED-GO e.G.</p>
+          <p>© {new Date().getFullYear()} {praxis.legalName}</p>
           <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="Rechtliche Hinweise">
             <a href={`${baseUrl}impressum/`} class="text-white/70 link-underline hover:text-white">Impressum</a>
             <a href={`${baseUrl}datenschutz/`} class="text-white/70 link-underline hover:text-white">Datenschutz</a>

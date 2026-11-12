@@ -1,0 +1,7 @@
+[
+  { "tag": "Montag", "dayOfWeek": "Monday", "zeiten": [["08:00", "12:00"], ["16:00", "18:00"]] },
+  { "tag": "Dienstag", "dayOfWeek": "Tuesday", "zeiten": [["08:00", "12:00"]] },
+  { "tag": "Mittwoch", "dayOfWeek": "Wednesday", "zeiten": [["08:00", "12:00"], ["16:00", "18:00"]] },
+  { "tag": "Donnerstag", "dayOfWeek": "Thursday", "zeiten": [["08:00", "12:00"]] },
+  { "tag": "Freitag", "dayOfWeek": "Friday", "zeiten": [["08:00", "12:00"], ["15:00", "16:00"]] }
+]
