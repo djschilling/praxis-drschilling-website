@@ -51,6 +51,14 @@ Die zweizeilige HTML-Wortmarke steht in `src/components/Brand.astro`:
 „MVZ Gomaringen“ in Fraunces 550, „Praxis Dr. Schilling · Hausarzt“ in Figtree 400.
 Im Hero wird kein zusätzliches Logo angezeigt.
 
+Vom ersten Advent bis einschließlich 6. Januar trägt das Logo eine Weihnachtsmütze
+(Geräteuhr, Zeitzone Europe/Berlin). Ein Klick schaltet Schneefall ein oder aus;
+Escape beendet ihn ebenfalls. Zum Testen außerhalb der Saison `?christmas=1`
+an die Seiten-URL hängen: Die Mütze erscheint wie in der Weihnachtszeit;
+der Schnee startet auch dann erst nach einem Klick auf die Mütze.
+Die Einstellung „Bewegung reduzieren“ verhindert Schneefall auch im Testmodus.
+Der Testmodus gilt nur für den jeweiligen Seitenaufruf und wird nicht gespeichert.
+
 Die Favicons sind nur verkleinerte Fassungen dieser Original-Bildmarke, keine
 separate SVG-Zeichnung. PNGs (16/32/48 px), ICO und Apple-Touch-Icon (180 px)
 werden in `src/layouts/MainLayout.astro` eingebunden. Reproduktion mit ImageMagick:

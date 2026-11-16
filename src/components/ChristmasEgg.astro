@@ -1,0 +1,146 @@
+<button
+  type="button"
+  class="christmas-hat"
+  hidden
+  aria-label="Schneefall einschalten"
+  aria-pressed="false"
+  title="Ein bisschen Weihnachtszauber? Schneefall einschalten"
+>
+  <svg viewBox="0 0 64 56" fill="none" aria-hidden="true">
+    <path d="M9 40C14 27 20 7 36 8C49 8 54 19 53 29L45 27C43 20 38 20 35 23L48 43Z" fill="#b9373d" />
+    <path d="M12 38C20 24 21 13 33 10C25 20 29 30 34 41Z" fill="#d64a4e" />
+    <rect x="5" y="36" width="47" height="13" rx="6.5" transform="rotate(7 5 36)" fill="#fffaf0" stroke="#ded8cd" />
+    <circle cx="52" cy="30" r="7" fill="#fffaf0" stroke="#ded8cd" />
+  </svg>
+</button>
+
+<script is:inline data-christmas-script>
+  (() => {
+    const hat = document.querySelector('.christmas-hat');
+    // Check in the browser: GitHub Pages builds must not freeze the season.
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(new Date());
+    const value = (type) => Number(parts.find((part) => part.type === type).value);
+    const year = value('year');
+    const today = Date.UTC(year, value('month') - 1, value('day'));
+    const christmas = new Date(Date.UTC(year, 11, 25));
+    const firstAdvent = Date.UTC(year, 11, 25 - (christmas.getUTCDay() || 7) - 21);
+    const preview = new URLSearchParams(window.location.search).get('christmas') === '1';
+    if (!preview && !(today >= firstAdvent || today <= Date.UTC(year, 0, 6))) return;
+
+    hat.hidden = false;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let snow;
+    const stop = () => {
+      snow?.remove();
+      snow = undefined;
+      hat.setAttribute('aria-pressed', 'false');
+      hat.setAttribute('aria-label', 'Schneefall einschalten');
+      hat.title = 'Ein bisschen Weihnachtszauber? Schneefall einschalten';
+    };
+    const updateMotion = () => {
+      stop();
+      hat.disabled = reducedMotion.matches;
+      if (reducedMotion.matches) {
+        hat.setAttribute('aria-label', 'Weihnachtsmütze – Schneefall bei reduzierter Bewegung deaktiviert');
+        hat.title = 'Frohe Weihnachten! Schneefall bei reduzierter Bewegung deaktiviert';
+      }
+    };
+    updateMotion();
+    reducedMotion.addEventListener('change', updateMotion);
+    hat.addEventListener('click', () => {
+      if (snow) return stop();
+      if (reducedMotion.matches) return;
+      snow = document.createElement('div');
+      snow.className = 'christmas-snow';
+      snow.setAttribute('aria-hidden', 'true');
+      for (let i = 0; i < 36; i++) {
+        const flake = document.createElement('span');
+        flake.style.cssText = `left:${Math.random() * 100}%;--size:${3 + Math.random() * 5}px;animation-duration:${10 + Math.random() * 10}s;animation-delay:-${Math.random() * 20}s`;
+        snow.append(flake);
+      }
+      document.body.append(snow);
+      hat.setAttribute('aria-pressed', 'true');
+      hat.setAttribute('aria-label', 'Schneefall ausschalten');
+      hat.title = 'Schneefall ausschalten (auch mit Escape)';
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && snow) stop();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (snow) snow.style.animationPlayState = document.hidden ? 'paused' : 'running';
+    });
+  })();
+</script>
+
+<style>
+  .christmas-hat {
+    position: absolute;
+    top: -0.8rem;
+    left: calc(clamp(2.5rem, 6vw, 4rem) * 0.6 - 22px);
+    width: 44px;
+    height: 44px;
+    padding: 2px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .christmas-hat svg {
+    width: clamp(1.75rem, 4.4vw, 2.5rem);
+    height: auto;
+    margin: auto;
+    transform: rotate(-12deg);
+    filter: drop-shadow(0 1px 1px rgb(15 46 42 / 15%));
+  }
+
+  .christmas-hat:hover:not(:disabled) svg {
+    transform: rotate(-4deg);
+  }
+
+  .christmas-hat:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+
+  .christmas-hat:disabled {
+    cursor: default;
+  }
+
+  :global(.christmas-snow) {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  :global(.christmas-snow span) {
+    position: absolute;
+    top: -12px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #fffaf0;
+    opacity: 0.7;
+    box-shadow: 0 0 2px rgb(22 64 57 / 25%);
+    animation: snowfall linear infinite;
+    animation-play-state: inherit;
+  }
+
+  @keyframes snowfall {
+    from { transform: translate3d(-20px, -12px, 0); }
+    to { transform: translate3d(20px, calc(100dvh + 24px), 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.christmas-snow) { display: none; }
+  }
+
+  @media print {
+    .christmas-hat,
+    :global(.christmas-snow) { display: none; }
+  }
+</style>

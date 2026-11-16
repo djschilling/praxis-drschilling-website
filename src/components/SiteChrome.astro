@@ -19,9 +19,7 @@ const datenschutzHref = `${baseUrl}datenschutz/`;
 
 <header class="site-header sticky top-0 z-50 border-b border-[color:var(--line)] text-praxis-deep shadow-sm">
   <div class="section-pad flex flex-wrap items-center justify-between gap-4 py-3.5">
-    <a href={homeHref} class="min-w-0 text-praxis-deep" aria-label="MVZ Gomaringen – Startseite">
-      <Brand />
-    </a>
+    <Brand href={homeHref} />
     <nav class="flex flex-wrap items-center gap-5 text-sm font-semibold text-praxis-ink" aria-label="Rechtliche Navigation">
       <a
         href={homeHref}
