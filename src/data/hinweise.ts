@@ -16,5 +16,14 @@ export const hinweise: Hinweis[] = [
     sichtbarAb: '2026-11-02T00:00:00+01:00',
     sichtbarBis: '2026-11-19T00:00:00+01:00',
     geschlossenAm: ['2026-11-18']
+  },
+  {
+    id: 'praxisurlaub-dezember-2026',
+    titel: 'Praxisurlaub',
+    text:
+      'Vom 28. bis einschließlich 30. Dezember 2026 bleibt unsere Praxis wegen Urlaub geschlossen.',
+    sichtbarAb: '2026-11-20T00:00:00+01:00',
+    sichtbarBis: '2026-12-31T00:00:00+01:00',
+    geschlossenAm: ['2026-12-28', '2026-12-29', '2026-12-30']
   }
 ];
