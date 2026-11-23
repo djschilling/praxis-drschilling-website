@@ -9,6 +9,14 @@ export interface Hinweis {
 
 export const hinweise: Hinweis[] = [
   {
+    id: 'praxisschliessung-nachmittag-2026-11-23',
+    titel: 'Nachmittagssprechstunde entfällt',
+    text:
+      'Am Montag, 23. November 2026, bleibt unsere Praxis am Nachmittag ausnahmsweise geschlossen.',
+    sichtbarAb: '2026-11-23T00:00:00+01:00',
+    sichtbarBis: '2026-11-24T00:00:00+01:00'
+  },
+  {
     id: 'praxisschliessung-buss-und-bettag-2026',
     titel: 'Praxis geschlossen',
     text:
